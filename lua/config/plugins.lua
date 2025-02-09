@@ -39,6 +39,9 @@ require("lazy").setup({
 		{ import = "plugins.gui.smoothScroll", enabled = settings.smoothScrool, },
 		{ import = "plugins.gui.scrollBar", enabled = true, },
 		{ import = "plugins.gui.bottomBar", enabled = true, },
+		-- test --
+		{ import = "plugins.lsp", enabled = true, },
+
 	},
 
 	checker = {
