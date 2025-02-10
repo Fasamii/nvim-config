@@ -104,7 +104,7 @@ return {
 				lualine_z = {
 					{
 						"location",
-						padding = 0,
+						padding = { left = 1, right = 1},
 					},
 				},
 			},
