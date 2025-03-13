@@ -1,10 +1,10 @@
 return {
 
-	theme = "catppuccin",
+	theme = "mellow",
 
 	globalRootDir = "$HOME/workspace",
 
-	smoothScrool = true,
+	smoothScrool = false,
 
 	languages = {
 		-- recomended --

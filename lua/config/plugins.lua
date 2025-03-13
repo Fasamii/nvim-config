@@ -32,6 +32,7 @@ local settings = require("config.settings")
 
 require("lazy").setup({
 	spec = {
+		-- default themes in nvim are quite good -- 
 		{ import = "plugins.themes." .. settings.theme, enabled = true, },
 		{ import = "plugins.telescope", enabled = true, },
 		{ import = "plugins.treesitter", enabled = true, },
@@ -39,7 +40,8 @@ require("lazy").setup({
 		{ import = "plugins.gui.smoothScroll", enabled = settings.smoothScrool, },
 		{ import = "plugins.gui.scrollBar", enabled = true, },
 		{ import = "plugins.gui.bottomBar", enabled = true, },
-		-- lsp --
+		{ import = "plugins.gui.yankHighlight", enabled = true },
+		{ import = "plugins.gui.peekLines", enabled = true },
 		{ import = "plugins.lsp", enabled = true, },
 	},
 
