@@ -43,6 +43,7 @@ require("lazy").setup({
 		{ import = "plugins.gui.yankHighlight", enabled = true },
 		{ import = "plugins.gui.peekLines", enabled = true },
 		{ import = "plugins.lsp", enabled = true, },
+		{ import = "plugins.gui.indentBlankline", enable = true },
 	},
 
 	checker = {

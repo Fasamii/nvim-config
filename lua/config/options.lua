@@ -11,7 +11,7 @@ vim.opt.number = true;
 vim.opt.relativenumber = true;
 
 -- vim.opt.scrolloff = 20;
-vim.opt.scrolloff = 20;
+vim.opt.scrolloff = 999;
 
 vim.opt.wrap = true;
 vim.opt.virtualedit = "block";
@@ -20,4 +20,3 @@ vim.opt.inccommand = "split";
 vim.opt.expandtab = false;
 vim.opt.tabstop = 4;
 vim.opt.shiftwidth = 4;
-
