@@ -1,6 +1,12 @@
+local themes = {"lackluster", "solarized-osaka", "mellow", "tokyo", "lackluster", "everforest"};
+
+math.randomseed(os.time())
+
 return {
 
-	theme = "mellow",
+	plugins = true,
+
+	theme = themes[math.random(1, #themes)],
 
 	globalRootDir = "$HOME/workspace",
 

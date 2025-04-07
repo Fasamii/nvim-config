@@ -33,17 +33,19 @@ local settings = require("config.settings")
 require("lazy").setup({
 	spec = {
 		-- default themes in nvim are quite good -- 
-		{ import = "plugins.themes." .. settings.theme, enabled = true, },
-		{ import = "plugins.telescope", enabled = true, },
-		{ import = "plugins.treesitter", enabled = true, },
-		{ import = "plugins.gui.startupScreen", enabled = true, },
-		{ import = "plugins.gui.smoothScroll", enabled = settings.smoothScrool, },
-		{ import = "plugins.gui.scrollBar", enabled = true, },
-		{ import = "plugins.gui.bottomBar", enabled = true, },
-		{ import = "plugins.gui.yankHighlight", enabled = true },
-		{ import = "plugins.gui.peekLines", enabled = true },
-		{ import = "plugins.lsp", enabled = true, },
-		{ import = "plugins.gui.indentBlankline", enable = true },
+		{ import = "plugins.themes." .. settings.theme, enabled = settings.plugins, },
+		{ import = "plugins.telescope", enabled = settings.plugins, },
+		{ import = "plugins.treesitter", enabled = settings.plugins, },
+		{ import = "plugins.gui.startupScreen", enabled = settings.plugins, },
+		{ import = "plugins.gui.smoothScroll", enabled = ( settings.smoothScrool and settings.plugins) },
+		{ import = "plugins.gui.scrollBar", enabled = settings.plugins, },
+		{ import = "plugins.gui.bottomBar", enabled = settings.plugins, },
+		{ import = "plugins.gui.yankHighlight", enabled = settings.plugins },
+		{ import = "plugins.gui.peekLines", enabled = settings.plugins },
+		{ import = "plugins.lsp", enabled = settings.plugins, },
+		{ import = "plugins.gui.indentBlankline", enable = settings.plugins },
+		{ import = "plugins.lsp.blink", enable = settings.plugins },
+
 	},
 
 	checker = {
