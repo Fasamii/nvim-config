@@ -27,9 +27,9 @@ return {
 					enable = true,
 					lookahead = true,
 					keymaps = {
-						["ef"] = "@function.outer",
+						["af"] = "@function.outer",
 						["if"] = "@function.inner",
-						["ec"] = "@class.outer",
+						["ac"] = "@class.outer",
 						["ic"] = "@class.inner",
 						["as"] = "@scope",
 					},

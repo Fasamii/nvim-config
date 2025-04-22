@@ -1,4 +1,4 @@
-local themes = {"lackluster", "solarized-osaka", "mellow", "tokyo", "lackluster", "everforest"};
+local themes = { "solarized-osaka", "mellow", "tokyo", "everforest" }; -- turned off { "lackluster" };
 
 math.randomseed(os.time())
 
