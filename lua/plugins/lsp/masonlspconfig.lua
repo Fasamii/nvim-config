@@ -1,13 +1,14 @@
 return {
 	"williamboman/mason-lspconfig.nvim",
 	dependencies = { "mason.nvim" },
+
 	config = function()
 		require("mason-lspconfig").setup({
+			automatic_installation = true;
 			ensure_installed = {
 				"lua_ls", "clangd", "rust_analyzer", "gopls", "pyright"
 			}
 		});
-		local automatic_installation = true;
 
 		require("mason-lspconfig").setup_handlers({
 			function(server_name)
@@ -16,7 +17,9 @@ return {
 				vim.diagnostic.config({
 					signs = false,
 				})
+				
 				-- or --
+				
 				--[[
 				vim.fn.sign_define("DiagnosticSignError", { text = "" })
 				vim.fn.sign_define("DiagnosticSignWarn",  { text = "" })

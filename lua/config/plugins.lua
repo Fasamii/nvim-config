@@ -45,7 +45,7 @@ require("lazy").setup({
 		{ import = "plugins.lsp", enabled = settings.plugins, },
 		{ import = "plugins.gui.indentBlankline", enable = settings.plugins },
 		{ import = "plugins.lsp.blink", enable = settings.plugins },
-
+		{ import = "plugins.gui.colorizer", enable = settings.plugins },
 	},
 
 	checker = {
