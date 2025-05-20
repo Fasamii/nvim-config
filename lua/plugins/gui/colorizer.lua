@@ -4,12 +4,18 @@ return {
 	priority = 10,
 	config = function ()
 		require("colorizer").setup({
+			'*',
 			html = {
 				mode = "background",
 				rgb_fn = true,
 				names = true,
 			},
 			css = {
+				mode = "background",
+				rgb_fn = true,
+				names = true,
+			},
+			lua = {
 				mode = "background",
 				rgb_fn = true,
 				names = true,
