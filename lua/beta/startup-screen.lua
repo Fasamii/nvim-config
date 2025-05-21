@@ -16,7 +16,7 @@ return {
 		 	-- dashboard.section.footer,
 			{ type = "padding", val = math.floor((vim.o.lines - 11) / 2), },
 			dashboard.section.buttons,
-			{ type = "padding", val = vim.o.lines - math.floor((vim.o.lines - 11) / 2) - 11, },
+			{ type = "padding", val = vim.o.lines - math.floor((vim.o.lines - 11) / 2) - 9, },
 			dashboard.section.footer,
 		};
 

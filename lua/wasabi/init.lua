@@ -1,6 +1,6 @@
-require("draft.colors");
+require("beta.colors");
 require("wasabi.opts");
-require("wasabi.remap");
+require("wasabi.plugins");
+require("wasabi.keymaps");
 require("wasabi.tweaks");
-require("wasabi.lazy");
 require("wasabi.spell");

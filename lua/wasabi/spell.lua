@@ -28,14 +28,13 @@ local tl = {
 	conf = require('telescope.config').values,
 };
 
--- TODO: fix error while replacing word on the last char
--- TODO: make telescope sorter put nearer most similar names 
--- TODO: make telescope replace word with searched word on enter if no result matches searched word
+-- FIXME: fix error while replacing word on the last char
+-- FIXME: make telescope sorter put nearer most similar names 
+-- FIXME: make telescope replace word with searched word on enter if no result matches searched word
 --	   make it add good word if entered with that method
-local function suggestions()
+local function get_suggestion()
 	local word = vim.fn.expand("<cword>");
 	local suggestions = vim.fn.spellsuggest(word, 20);
-
 	tl.pickers.new({}, {
 		prompt_title = "Spell suggestions: " .. word,
 		finder = tl.finders.new_table(suggestions),
@@ -63,6 +62,6 @@ vim.keymap.set('n', 'zg', function() vim.cmd("normal! zg") end, { noremap = true
 -- Mark word as incorrect
 vim.keymap.set('n', 'zw', function() vim.cmd("normal! zw") end, { noremap = true, silent = true, desc = "Mark word as incorrect" });
 -- Show spelling suggestions
-vim.keymap.set('n', 'z=', suggestions, { noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
+vim.keymap.set('n', 'zs', get_suggestion, { noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
 
 enable_spell();

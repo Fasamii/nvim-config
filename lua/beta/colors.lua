@@ -146,3 +146,4 @@ hl("@conceal", { fg = p.white }); -- Placeholder characters
 
 
 vim.cmd("colorscheme wildcharm");
+
