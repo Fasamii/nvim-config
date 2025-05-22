@@ -35,7 +35,7 @@ require("lazy").setup({
 		{ import = "beta.autopairs", enabled = true },
 		{ import = "beta.lsp", enabled = true },
 		{ import = "beta.completition", enabled = true }, -- TODO: requires lsp to work -- can be fixed with if statement in blink sources
-		{ import = "beta.tags", enabled = true },
+		{ import = "beta.labels", enabled = true },
 	},
 
 });
