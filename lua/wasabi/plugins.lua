@@ -31,10 +31,10 @@ require("lazy").setup({
 		{ import = "wasabi.plugins.which-key", enabled = true },
 		{ import = "beta.telescope", enabled = true },
 		{ import = "beta.treesitter", enabled = true },
-		{ import = "beta.colorizer", enabled = true },
+		{ import = "beta.highlight-colors", enabled = true },
 		{ import = "beta.autopairs", enabled = true },
 		{ import = "beta.lsp", enabled = true },
-		{ import = "beta.completition", enabled = true }, -- TODO: requires lsp to work -- can be fixed with if statement in blink sources
+		{ import = "beta.completition", enabled = true },
 		{ import = "beta.labels", enabled = true },
 	},
 

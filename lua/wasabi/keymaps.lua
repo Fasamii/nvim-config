@@ -72,7 +72,7 @@ vim.keymap.set("n", "<leader>ll", "<cmd>TodoTelescope<cr>", { desc = "list all l
 vim.keymap.set("n", "<leader>lfl", "<cmd>TodoTelescope keywords=FIX,FIXME,BUG,FIXIT,ISSUE,ERR<cr>", { desc = "list all FIXME labels" });
 vim.keymap.set("n", "<leader>ltl", "<cmd>TodoTelescope keywords=TODO<cr>", { desc = "list all TODO labels" });
 vim.keymap.set("n", "<leader>lwl", "<cmd>TodoTelescope keywords=WARN,WARNING,XXX<cr>", { desc = "list all WARN labels" });
-vim.keymap.set("n", "<leader>lnl", "<cmd>TodoTelescope keywords=NOTE,INFO<cr>", { desc = "list all NOTE labels" });
+vim.keymap.set("n", "<leader>lil", "<cmd>TodoTelescope keywords=NOTE,INFO<cr>", { desc = "list all NOTE labels" });
 vim.keymap.set("n", "<leader>lpl", "<cmd>TodoTelescope keywords=PERF,OPTIM,PERFORMANCE,OPTIMIZE<cr>", { desc = "list all PERF labels" });
 vim.keymap.set("n", "<leader>ltl", "<cmd>TodoTelescope keywords=TEST,TESTING,PASSED,FAILED<cr>", { desc = "list all TEST labels" });
 
@@ -94,9 +94,9 @@ vim.keymap.set("n", "<leader>lwn", function() require("todo-comments").jump_next
 vim.keymap.set("n", "<leader>lwp", function() require("todo-comments").jump_next({ keywords = { "WARN", "WARNING", "XXX" } }) end,
 	{ desc = "Next WARN label" })
 
-vim.keymap.set("n", "<leader>lnn", function() require("todo-comments").jump_next({ keywords = { "NOTE", "INFO" } }) end,
+vim.keymap.set("n", "<leader>lin", function() require("todo-comments").jump_next({ keywords = { "NOTE", "INFO" } }) end,
 	{ desc = "Next NOTE label" })
-vim.keymap.set("n", "<leader>lnp", function() require("todo-comments").jump_next({ keywords = { "NOTE", "INFO" } }) end,
+vim.keymap.set("n", "<leader>lip", function() require("todo-comments").jump_next({ keywords = { "NOTE", "INFO" } }) end,
 	{ desc = "Next NOTE label" })
 
 vim.keymap.set("n", "<leader>lpn", function() require("todo-comments").jump_next({ keywords = { "PERF", "OPTIM", "PERFORMANCE", "OPTIMIZE" } }) end,
