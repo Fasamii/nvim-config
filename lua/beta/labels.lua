@@ -67,8 +67,9 @@ return {
 			exclude = {}, -- list of file types to exclude highlighting
 		},
 		colors = {
+			--TODO: tweaks colors e.g.: make TODO highlight darker.
 			err = { "Error", "ErrorMsg", "DiagnosticError", "#dc2626" },
-			warn = { "Warn", "DiagnosticWarn", "WarningMsg", "#fbbf24" },
+			warn = { "Warn", "WarningMsg", "DiagnosticWarn", "#fbbf24" },
 			info = { "Info","DiagnosticInfo", "#2563eb" },
 			default = { "Identifier", "#7c3aed" },
 		},

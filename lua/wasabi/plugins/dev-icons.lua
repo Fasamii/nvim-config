@@ -49,7 +49,7 @@
 		override_by_operating_system = {
 			["apple"] = {
 				icon = "",
-				color = "#00000",
+				color = "#000000",
 				cterm_color = "0",
 				name = "Apple",
 			},

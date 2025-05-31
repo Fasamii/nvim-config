@@ -1,5 +1,6 @@
 return {
 	-- FIXME: do something with that lsp
+	-- TODO: disable printing "g" to nvim while lsp starts
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {

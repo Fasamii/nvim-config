@@ -30,12 +30,13 @@ require("lazy").setup({
 		{ import = "beta.startup-screen", enabled = true },
 		{ import = "wasabi.plugins.which-key", enabled = true },
 		{ import = "beta.telescope", enabled = true },
+		{ import = "beta.same-highlight", enabled = true },
 		{ import = "beta.treesitter", enabled = true },
 		{ import = "beta.highlight-colors", enabled = true },
 		{ import = "beta.autopairs", enabled = true },
+		{ import = "beta.indentation", enabled = false },
 		{ import = "beta.lsp", enabled = true },
 		{ import = "beta.completition", enabled = true },
 		{ import = "beta.labels", enabled = true },
 	},
-
 });

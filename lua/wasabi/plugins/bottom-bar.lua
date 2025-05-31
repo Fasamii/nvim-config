@@ -1,3 +1,5 @@
+-- TODO: make lualine span always entire window even with split screens
+-- TODO: hide nvim line or lualine on startup screen
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
@@ -7,7 +9,38 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = "auto",
+			theme = {
+				normal = {
+					a = "LL_N_A",
+					b = "LL_N_B",
+					c = "LL_N_C",
+				},
+				insert = {
+					a = "LL_I_A",
+					b = "LL_I_B",
+					c = "LL_I_C",
+				},
+				visual = {
+					a = "LL_V_A",
+					b = "LL_V_B",
+					c = "LL_V_C",
+				},
+				replace = {
+					a = "LL_R_A",
+					b = "LL_R_B",
+					c = "LL_R_C",
+				},
+				command = {
+					a = "LL_C_A",
+					b = "LL_C_B",
+					c = "LL_C_C",
+				},
+				inactive = {
+					a = "LL_X_A",
+					b = "LL_X_B",
+					c = "LL_X_C",
+				},
+			},
 			component_separators = { left = "", right = ""},
 			section_separators = { left = "┃", right = "┃"},
 			-- section_separators = { left = "◣", right = "◥"},
@@ -60,6 +93,11 @@ return {
 				{
 					"diff",
 					colored = true,
+					diff_color = {
+						added = "GitAdd",
+						modified = "GitMod",
+						removed = "GitRem",
+					},
 					symbols = {
 						added = "+",
 						modified = "~",

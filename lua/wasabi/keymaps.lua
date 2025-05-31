@@ -1,3 +1,4 @@
+-- TODO: consider adding which-key .add() foo to every binding
 -------------------
 -- vim-specific  --
 -------------------
@@ -25,20 +26,29 @@ vim.keymap.set("n", "<leader>dl", "0D", { desc = "delete line without new line c
 vim.keymap.set("n", "<leader>br", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace word cursor is on globally" });
 
+-- netrw
+vim.keymap.set("n", "<leader>fs", "<cmd>Lexplore<CR>", { desc = "open side version of netrw" });
+
 -- tabs
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "create new tab" });
-vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "close current tab" });
+vim.keymap.set("n", "<leader>td", "<cmd>tabclose<CR>", { desc = "close current tab" });
 vim.keymap.set("n", "<leader>tl", "<cmd>tabn<CR>", { desc = "next tab" });
 vim.keymap.set("n", "<leader>th", "<cmd>tabp<CR>", { desc = "prev tab" });
 
 -- split
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" });
 vim.keymap.set("n", "<leader>sp", "<C-w>s", { desc = "split window horizontaly" });
-vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "close current split" });
+vim.keymap.set("n", "<leader>sd", "<cmd>close<CR>", { desc = "close current split" });
 vim.keymap.set("n", "<leader>sh", "<C-w>h", { desc = "split window horizontaly" });
 vim.keymap.set("n", "<leader>sj", "<C-w>j", { desc = "close current split" });
 vim.keymap.set("n", "<leader>sk", "<C-w>k", { desc = "split window horizontaly" });
 vim.keymap.set("n", "<leader>sl", "<C-w>l", { desc = "close current split" });
+
+vim.keymap.set("n", "<leader>srh", "<C-w>>", { desc = "resize split window (left)"});
+vim.keymap.set("n", "<leader>srl", "<C-w><", { desc = "resize split window (left)"});
+vim.keymap.set("n", "<leader>srk", "<C-w>+", { desc = "resize split window (left)"});
+vim.keymap.set("n", "<leader>srj", "<C-w>-", { desc = "resize split window (left)"});
+vim.keymap.set("n", "<leader>sr=", "<C-w>=", { desc = "resize split window (left)"});
 
 -- misc
 vim.keymap.set("n", "<leader>gp", function()
@@ -59,15 +69,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- open
 vim.keymap.set("n", "<leader>fo", vim.cmd.Ex, { desc = "open file explorer" });
 
---------------------------
+----------------------------
 -- lsp-specific (lsp.lua) --
---------------------------
+----------------------------
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "open lsp diagnostics" });
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "format current buffer" });
 
---------------------------
+--------------------------------
 -- todo-comments (labels.lua) --
---------------------------
+--------------------------------
 vim.keymap.set("n", "<leader>ll", "<cmd>TodoTelescope<cr>", { desc = "list all labels" });
 vim.keymap.set("n", "<leader>lfl", "<cmd>TodoTelescope keywords=FIX,FIXME,BUG,FIXIT,ISSUE,ERR<cr>", { desc = "list all FIXME labels" });
 vim.keymap.set("n", "<leader>ltl", "<cmd>TodoTelescope keywords=TODO<cr>", { desc = "list all TODO labels" });

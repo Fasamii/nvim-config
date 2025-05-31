@@ -35,6 +35,17 @@ vim.opt.backup = false;
 vim.opt.directory = os.getenv("HOME") .. "/.backup/nvim-swap";
 vim.opt.swapfile = true;
 
+vim.g.netrw_banner = 0;
+vim.g.netrw_liststyle = 3;
+vim.g.netrw_tree_indentstr = "x ";
+vim.g.netrw_tree_vert = "x";
+vim.g.netrw_winsize = 18;
+vim.g.netrw_sort_by = "name";
+vim.g.netrw_localcopydircmd = "cp -r";
+vim.g.netrw_localrmdir = "rm -rf";
+vim.g.netrw_preview = 1;       -- 1: preview file under cursor on <CR>
+vim.g.netrw_fastbrowse = 0;       -- 1: enable caching for faster browsing
+
 vim.opt.updatetime = 50;
 vim.opt.isfname:append("@-@");
 

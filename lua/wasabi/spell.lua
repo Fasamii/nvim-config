@@ -1,6 +1,5 @@
 local languages = "en_us,pl";
 local spell_dir = vim.fn.stdpath("config") .. "/lua/wasabi/spell";
-local has_which_key = pcall(require, "which-key");
 
 vim.fn.mkdir(spell_dir, "p");
 vim.opt.spellfile = spell_dir .. "/spellfile.utf-8.add";
@@ -12,7 +11,7 @@ end;
 local function disable_spell()
   vim.opt.spell = false;
 end;
-function toggle()
+function SpellingToggle()
 	if vim.opt.spell:get() then
 		disable_spell();
 	else
@@ -28,11 +27,11 @@ local tl = {
 	conf = require('telescope.config').values,
 };
 
--- FIXME: fix error while replacing word on the last char
--- FIXME: make telescope sorter put nearer most similar names 
+-- FIXME: replacing word while cursor is on the last char doubles the insert
+-- FIXME: make telescope sorter put most similar names nearer
 -- FIXME: make telescope replace word with searched word on enter if no result matches searched word
---	   make it add good word if entered with that method
-local function get_suggestion()
+--	    make it add good word if entered with that method
+function GetSuggestion()
 	local word = vim.fn.expand("<cword>");
 	local suggestions = vim.fn.spellsuggest(word, 20);
 	tl.pickers.new({}, {
@@ -51,17 +50,11 @@ local function get_suggestion()
 	}):find()
 end;
 
--- Toggle spell checking on/off
-vim.keymap.set('n', '<leader>s', toggle, { noremap = true, silent = true, desc = "Toggle spell checking" });
--- Next misspelled word
-vim.keymap.set('n', ']s', function() vim.cmd("normal! ]s") end, { noremap = true, silent = true, desc = "Next misspelled word" });
--- Previous misspelled word
-vim.keymap.set('n', '[s', function() vim.cmd("normal! [s") end, { noremap = true, silent = true, desc = "Previous misspelled word" });
--- Add word to dictionary
-vim.keymap.set('n', 'zg', function() vim.cmd("normal! zg") end, { noremap = true, silent = true, desc = "Add word to dictionary" });
--- Mark word as incorrect
-vim.keymap.set('n', 'zw', function() vim.cmd("normal! zw") end, { noremap = true, silent = true, desc = "Mark word as incorrect" });
--- Show spelling suggestions
-vim.keymap.set('n', 'zs', get_suggestion, { noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
+vim.keymap.set("n", "zt", SpellingToggle, { noremap = true, silent = true, desc = "Toggle spell checking" });
+vim.keymap.set("n", "zn", function() vim.cmd("normal! ]s") end, { noremap = true, silent = true, desc = "Next misspelled word" });
+vim.keymap.set("n", "zp", function() vim.cmd("normal! [s") end, { noremap = true, silent = true, desc = "Previous misspelled word" });
+vim.keymap.set("n", "zg", function() vim.cmd("normal! zg") end, { noremap = true, silent = true, desc = "Add word to dictionary" });
+vim.keymap.set("n", "zw", function() vim.cmd("normal! zw") end, { noremap = true, silent = true, desc = "Mark word as incorrect" });
+vim.keymap.set("n", "zs", GetSuggestion, { noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
 
 enable_spell();

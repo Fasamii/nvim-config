@@ -1,149 +1,276 @@
-vim.o.background = "dark";
 vim.cmd("highlight clear");
+if vim.fn.exists("syntax_on") then vim.cmd("syntax reset"); end;
 vim.g.colors_name = "sobsob";
-local function hl(group, style) vim.api.nvim_set_hl(0, group, style); end;
-local colors = {
-	wildcharm = {
-		white		= "#ffffff",
-		white_dimm	=  "#d0d0d0",
-		white_dark	=   "#8a8a8a",
-		gray		= "#626262",
-		gray_dimm	=  "#444444",
-		gray_dark	=   "#2e2e2e",
-		black		= "none",
-		black_solid	= "#000000",
-		
-		red		= "#ff5f87",
-		red_dimm	=  "#d7005f",
-		red_dark	=   "#870000",
-		green		= "#00d757", -- "example"
-		green_black =  "#01b453", -- "example",
-		green_dimm	=  "#5faf5f",
+vim.o.background = "dark";
+local cp = {
+	bg_solid	= "#000000",
+	bg		= "none",
+
+	white		= "#d0d0d0",
+	white_dimm	=  "#b3b3b3",
+	white_dark	=   "#585858",
+
+	black		= "#1a1a1a",
+	black_dimm	= "#161618",
+	black_dark	= "#0f0f12",
+	black_shadow= "#080809",
+
+	green		= "#00d75f",
+	cyan		= "#00b3e5",
+	blue		= "#569cd6",
+	violet	= "#875fff",
+	purple	= "#ff87ff",
+	magneta	= "#d600c8",
+	red		= "#ed3131",
+	pink		= "#ff5fa3",
+	yellow	= "#ffaf00",
+	orange	= "#f26c0c",
+
+	util_lv1	= "#f487b6",
+	util_lv2	= "#9046cf",
+	util_lv3	= "#cc59d2",
 
 
-	},
+	error		= "#ff4081",
+	warning	= "#ffaf00",
+	info		= "#00b3e5",
+	hint		= "#00d75f",
 
-	rainbow = {
-		white		= "#ffffff",
-		white_dark	=  "#c7c7c7",
-		gray		= "#505468",
-		gray_dark	=  "#363946",
-		black		= "none",
-		black_solid	= "#000000",
-		
-		candy 	= "#ff1a44",
-		candy_dimm 	=  "#cc002f",
-		candy_dark 	=   "#a30026",
-		gum		= "#ff0099",
-		gum_dimm	=  "#c10081",
-		gum_dark	=   "#990065",
-		violet	= "#de00ff",
-		violet_dimm	=  "#a300c1",
-		violet_dark	=   "#800090",
-		sea		= "#0066ff",
-		sea_dimm	=  "#004ec2",
-		sea_dark	=   "#003d99",
-		plasma	= "#00e5ff",
-		plasma_dimm	=  "#00afc2",
-		plasma_dark	=   "#008a99",
-		glow		= "#26ff00",
-		glow_dimm	=  "#1dc200",
-		glow_dark	=   "#179900",
-	},
+	border	= "#464647",
+	selection	= "#264f78",
+	search	= "#613214",
+	match_paren	= "#007acc",
 };
-local p = colors.rainbow;
 
--- Normal
-hl("Normal", { bg = p.black, fg = p.white });
-hl("NormalNC", { bg = p.black, fg = p.white_dark });
--- Side
-hl("LineNr", { bg = p.black, fg = p.gray_dark});
-hl("NonText", { bg = p.black, fg = p.gray_dark });
+local function hl(group, style) vim.api.nvim_set_hl(0, group, style); end;
 
--- Basic's
-hl("@comment", { fg = p.white_dark }); -- comments
-hl("@error", { bg = p.candy }); -- Syntax/parser errors
-hl("@none", { bg = p.glow }); -- No highlight (disable highlighting)
-hl("@preproc", { bg = p.plasma }); -- Preprocessor directive's
-hl("@define", { bg = p.plasma }); -- Preprocessor definitions
-hl("@operator", { fg = p.white }); -- Operators
--- punctuation's
-hl("@punctuation.delimiter", { bg = p.gum }); -- Delimiters (commas, colons, ...)
-hl("@punctuation.bracket", { bg = p.violet }); -- Brackets, braces, parentheses
-hl("@punctuation.special", { bg = p.sea }); -- Special punctuation
--- Literal's
-hl("@string", { fg = p.glow }); -- String literals
-hl("@string.regex", { fg = p.glow }); -- Regular expressions
-hl("@string.escape", { fg = p.glow }); -- Escape sequences
-hl("@string.special", { fg = p.glow }); -- Special strings
-hl("@character", { bg = p.candy }); -- character literals
-hl("@character.special", { bg = p.candy }); -- Special character
-hl("@boolean", { bg = p.candy }); -- Boolean literals
-hl("@number", { bg = p.sea}); -- Numeric literals
-hl("@float",  { bg = p.plasma_dimm }); -- Floating-point literals
--- Keyword's
-hl("@keyword", { fg = p.white }); -- Keywords
-hl("@keyword.function", { fg = p.white }); -- Function Keyword
-hl("@keyword.operator", { fg = p.white }) -- Operator keywords
-hl("@keyword.return", { bg = p.glow_dark }); -- Return keyword
-hl("@conditional", { bg = p.sea_dark }); -- Conditional keywords
-hl("@repeat", { bg = p.candy }); -- Repeat/loop keywords
-hl("@debug", { bg = p.candy }); -- Debugging statements 
-hl("@include", { bg = p.candy }); -- include keywords
-hl("@exception", { bg = p.candy }); -- Exception related keywords
--- Function's
-hl("@function", { fg = p.white }); -- Function definitions
-hl("@function.builtin", { fg = p.white }); -- Build-in functions
-hl("@function.call", { fg = p.white }); -- Function calls
-hl("@function.macro", { fg = p.white }); -- Macro functions
-hl("@method", { bg = p.glow }); -- Method definitions
-hl("@method.call", { bg = p.glow_dimm }); -- Method calls
-hl("@constructor", { fg = p.white }); -- Constructor calls and definitions
-hl("@parameter", { fg = p.white }); -- Function parameters
--- Types
-hl("@type", { fg = p.white }); -- Type definitions and built-ins
-hl("@type.builtin", { fg = p.white }); -- Build-in types
-hl("@type.qualifier", { bg = p.candy }); -- Type qualifiers
-hl("@type.definition", { bg = p.candy }); -- Type definitions 
-hl("@storageclass", { bg = p.candy }); -- Storage class modifiers
-hl("@field", { bg = p.candy }); -- Object and struct fields
-hl("@property", { bg = p.candy }); -- Object properties
--- Identifiers
-hl("@variable", { fg = p.white }); -- Variables
-hl("@variable.builtin", { fg = p.white }); -- Built-in variables
-hl("@constant", { fg = p.white }); -- Constants
-hl("@constant.builtin", { fg = p.white }); -- Built-in constants
-hl("@constant.macro", { fg = p.white }); -- Macro constants
-hl("@namespace", { fg = p.white }); -- Namespaces
-hl("@symbol", { fg = p.white }); -- Symbols
+-- Basic editor highlights
+hl("Normal", { fg = cp.white, bg = cp.bg });
+hl("CursorLine", { bg = cp.black });
+hl("CursorLineNr", { fg = cp.purple, bg = cp.bg, bold = true });
+hl("LineNr", { fg = cp.white_dark, bg = cp.bg });
+hl("Visual", { bg = cp.selection });
+hl("Search", { bg = cp.search });
+hl("IncSearch", { bg = cp.black_dimm, fg = cp.yellow });
+hl("MatchParen", { fg = cp.black_dark, bold = true });
+----------------
+---- syntax ----
+----------------
+--------------
+-- fallback --
+--------------
 -- Text
-hl("@text", { fg = p.white }) -- Non-structured text
-hl("@text.strong", { fg = p.white }) -- Bold text
-hl("@text.emphasis", { fg = p.white }) -- Emphasized text
-hl("@text.underline", { fg = p.white }) -- Underlined text
-hl("@text.strike", { fg = p.white }) -- Strikethrough text
-hl("@text.title", { fg = p.white }) -- Titles
-hl("@text.literal", { fg = p.white }) -- Literal or verbatim text
-hl("@text.uri", { fg = p.white }) -- URIs (URLs, file paths, etc.)
-hl("@text.math", { fg = p.white }) -- Math environments
-hl("@text.reference", { fg = p.white }) -- References
-hl("@text.environment", { fg = p.white }) -- Text environments
-hl("@text.environment.name", { fg = p.white }) -- Text environment names
-hl("@text.note", { fg = p.white }) -- Notes
-hl("@text.warning", { fg = p.white }) -- Warnings
-hl("@text.danger", { fg = p.white }) -- Danger alerts
-hl("@text.diff.add", { fg = p.white }) -- Added text (for diffs)
-hl("@text.diff.delete", { fg = p.white }) -- Deleted text (for diffs)
--- Tags
-hl("tag", { fg = p.white }); -- Tags
-hl("tag.attribute", { fg = p.white }); -- HTML tag attributes
-hl("tag.delimiter", { fg = p.white }); -- Tag delimiters
--- Conceal
-hl("@conceal", { fg = p.white }); -- Placeholder characters
--- Spell (idk how it works)
--- hl("@spell", {}); -- Spell checking
--- hl("@nospell", {}); -- Disable spell checking
+hl("Comment", { fg = cp.white_dark });
+hl("PreCondit", { fg = cp.orange });
+hl("SpecialChar", { fg = cp.violet });
+hl("@text", { fg = cp.white }); -- Non-structured text
+hl("@text.strong", { fg = cp.white, bold = true }); -- Bold text
+hl("@text.emphasis", { fg = cp.white }); -- Emphasized text
+hl("@text.underline", { fg = cp.white, underline = true }); -- Underlined text
+hl("@text.strike", { fg = cp.white, strikethrough = true }); -- Strikethrough text
+hl("@text.title", { fg = cp.white, bold = true }); -- Titles
+hl("@text.literal", { fg = cp.white }); -- Literal or verbatim text
+hl("@text.uri", { fg = cp.cyan, underline = true }); -- URIs (URLs, file paths, etc.)
+hl("@text.math", { fg = cp.cyan }); -- Math environments
+hl("@text.reference", { fg = cp.white }); -- References
+hl("@text.environment", { fg = cp.white }); -- Text environments
+hl("@text.environment.name", { fg = cp.white }); -- Text environment names
+hl("@text.note", { fg = cp.white_dimm }); -- Notes
+hl("@text.warning", { fg = cp.warning }); -- Warnings
+hl("@text.danger", { fg = cp.error }); -- Danger alerts
+hl("@text.diff.add", { fg = cp.util_lv1 }); -- Added text (for diffs)
+hl("@text.diff.delete", { fg = cp.util_lv3 }); -- Deleted text (for diffs)
+-- Function
+hl("Function", { fg = cp.purple, bold = true });
+hl("Label", { fg = cp.magneta });
+-- Keyword
+hl("Keyword", { fg = cp.cyan });
+hl("Statment", { fg = cp.cyan });
+hl("Conditional", { fg = cp.cyan });
+hl("Repeat", { fg = cp.cyan });
+hl("Exception", { fg = cp.cyan });
+-- Identifier
+hl("Identifier", { fg = cp.purple });
+-- Statement
+hl("Macro", { fg = cp.magneta });
+hl("Define", { fg = cp.magneta });
+hl("Include", { fg = cp.magneta });
+-- Type
+hl("Type", { fg = cp.yellow });
+hl("Constant", { fg = cp.yellow, bold = true });
+hl("Structure", { fg = cp.yellow, bold = true });
+-- Literal
+hl("Number", { fg = cp.red });
+hl("Boolean", { fg = cp.red });
+hl("Float", { fg = cp.red });
+hl("Character", { fg = cp.red });
+hl("String", { fg = cp.green });
+-- Operator
+hl("Operator", { fg = cp.cyan });
+-- Delimiter
+hl("Delimiter", { fg = cp.violet });
+hl("MatchParen", { fg = cp.yellow, bold = true });
+-- Diagnostic
+hl("Error", { fg = cp.error });
+hl("ErrorMsg", { fg = cp.error });
+hl("Warning", { fg = cp.warning });
+hl("WarningMsg", { fg = cp.warning });
+----------------
+-- Treesitter --
+----------------
+-- Text
+hl("@comment", { fg = cp.white_dark });
+hl("@comment.documentation", { fg = cp.white_dimm });
+hl("@special.comment", { fg = cp.white_dark, bold = true });
+hl("@preproc", { fg = cp.orange });
+-- Keyword
+hl("@keyword", { fg = cp.cyan });
+hl("@keyword.function", { fg = cp.cyan });
+hl("@keyword.operator", { fg = cp.cyan });
+hl("@keyword.return", { fg = cp.cyan });
+hl("@conditional", { fg = cp.cyan });
+hl("@repeat", { fg = cp.cyan });
+-- Statement
+hl("@debug", { fg = cp.ornage });
+hl("@statment", { fg = cp.violet });
+hl("@include", { fg = cp.magneta });
+hl("@define", { fg = cp.magneta });
+hl("@macro", { fg = cp.magneta });
+-- Identifier
+hl("@identifier", { fg = cp.purple });
+hl("@property", { fg = cp.purple }); -- Object properties -- TODO: check if that exists
+hl("@symbol", { bg = cp.purple }); -- Symbols -- TODO: check if that exists
+hl("@field", { fg = cp.purple }); -- Object and struct fields --TODO: check if that exists
+hl("@variable", { fg = cp.purple });
+hl("@variable.builtin", { fg = cp.purple, bold = true });
+hl("@variable.property", { fg = cp.purple });
+hl("@variable.parameter", { fg = cp.purple });
+hl("@variable.function", { fg = cp.purple, bold = true });
+-- Function
+hl("@function", { fg = cp.purple, bold = true });
+hl("@function.call", { fg = cp.purple, bold = true });
+hl("@parameter", { fg = cp.purple });
+hl("@method.call", { bg = cp.purple, bold = true });
+hl("@method", { fg = cp.purple, bold = true });
+hl("@constructor", { fg = cp.pink, bold = true }); --TODO: for some reason treesitter consider {} pretenses as constructors
+hl("@label", { fg = cp.purple, bold = true });
+-- Type
+--
+hl("@type", { fg = cp.yellow });
+hl("@type.builtin", { fg = cp.yellow });
+hl("@type.qualifier", { fg = cp.yellow });
+hl("@type.definition", { bg = cp.yellow }); -- Type definitions 
+hl("@storageclass", { fg = cp.yellow });
+hl("@namespace", { fg = cp.yellow }); -- TODO: consider other color for constant
+hl("@constant", { fg = cp.yellow, bold = true });
+hl("@constant.builtin", { fg = cp.yellow, bold = true });
+hl("@constant.macro", { fg = cp.magneta });
+-- Lsp Type
+hl("@lsp.type.structure", { fg = cp.yellow, bold = true });
+-- Literal
+hl("@null", { fg = cp.red });
+hl("@string", { fg = cp.green });
+hl("@string.regex", { fg = cp.magneta }); -- Regular expressions
+hl("@string.escape", { fg = cp.magneta }); -- Escape sequences
+hl("@string.special", { fg = cp.magneta }); -- Special strings
+hl("@character", { fg = cp.red });
+hl("@character.special", { fg = cp.red }); -- Special character
+hl("@number", { fg = cp.red });
+hl("@boolean", { fg = cp.red });
+hl("@float", { fg = cp.red });
+-- Punctuation
+hl("@punctuation.bracket", { fg = cp.violet }); -- Brackets, braces, parentheses
+hl("@punctuation.delimiter", { fg = cp.violet }); -- Delimiters (commas, colons, ...)
+hl("@punctuation.special", { fg = cp.violet }); -- Special punctuation
+-- Operator 
+hl("@operator", { fg = cp.agneta });
+-- -- util
+hl("@error", { fg = cp.error });
+hl("@none", { fg = cp.purple });
+--------------
+---- util ----
+--------------
+--------------
+-- spelling --
+--------------
+hl("SpellBad", { undercurl = true, sp = cp.error });
+hl("SpellCap", { undercurl = true, sp = cp.warning });
+-- TODO: SpellLocal, SpellRare
+------------
+-- status --
+------------
+hl("Error", { fg = cp.error });
+hl("ErrorMsg", { fg = cp.error });
+hl("DiagnosticError", { fg = cp.error });
 
+hl("Warn", { fg = cp.warn });
+hl("WarningMsg", { fg = cp.warn });
+hl("DiagnosticWarn", { fg = cp.warn });
 
-vim.cmd("colorscheme wildcharm");
+hl("Info", { fg = cp.info });
+hl("DiagnosticInfo", { fg = cp.info });
+---------
+-- git --
+---------
+hl("GitAdd", { fg = cp.util_lv1, bold = true });
+hl("GitMod", { fg = cp.util_lv2, bold = true });
+hl("GitRem", { fg = cp.util_lv3, bold = true });
+------------------
+-- status lines --
+------------------
+-- nvim builtin
+hl("StatusLine", { bg = cp.black_dark, fg = cp.white });
+hl("TabLineFill", { bg = cp.black_dark });
+hl("TabLineSel", { bg = cp.black_dimm, fg = cp.magneta, bold = true });
+hl("TabLine", { bg = cp.black_dark, fg = cp.violet });
+-- lualine
+hl("LL_N_A", { bg = cp.blue, fg = cp.bg_solid, bold = true });
+hl("LL_N_B", { fg = cp.violet, bold = true });
+hl("LL_N_C", { fg = cp.violet, bold = true });
 
+hl("LL_I_A", { bg = cp.green, fg = cp.bg_solid, bold = true });
+hl("LL_I_B", { fg = cp.violet, bold = true });
+hl("LL_I_C", { fg = cp.violet, bold = true });
+
+hl("LL_V_A", { bg = cp.yellow, fg = cp.bg_solid, bold = true });
+hl("LL_V_B", { fg = cp.violet, bold = true });
+hl("LL_V_C", { fg = cp.violet, bold = true });
+
+hl("LL_R_A", { bg = cp.pink, fg = cp.bg_solid, bold = true });
+hl("LL_R_B", { fg = cp.violet, bold = true });
+hl("LL_R_C", { fg = cp.violet, bold = true });
+
+hl("LL_C_A", { bg = cp.violet, fg = cp.bg_solid, bold = true });
+hl("LL_C_B", { fg = cp.violet, bold = true });
+hl("LL_C_C", { fg = cp.violet, bold = true });
+
+hl("LL_X_A", { bg = cp.purple, fg = cp.bg_solid, bold = true });
+hl("LL_X_B", { fg = cp.violet, bold = true });
+hl("LL_X_C", { fg = cp.violet, bold = true });
+---------------
+-- which-key --
+---------------
+hl("WhichKey", { fg = cp.magneta, bold = true });
+-- hl("WhichKeyBorder", { bg = cp.red });
+hl("WhichKeyDesc", { fg = cp.purple });
+hl("WhichKeyGroup", { fg = cp.cyan });
+-- hl("WhichKeyIconGrey", { bg = cp.red });
+-- hl("WhichKeyTitle", { bg = cp.red });
+hl("WhichKeyNormal", { bg = cp.black_shadow });
+-----------------
+-- indentation --
+-----------------
+-- TODO: do the indentation highlights group (only if you decide to use indent plugin)
+hl("Indent_A", { bg = cp.magneta });
+hl("Indent_B", { bg = cp.magneta });
+hl("Indent_C", { bg = cp.magneta });
+hl("Indent_D", { bg = cp.magneta });
+hl("Indent_E", { bg = cp.magneta });
+hl("Indent_F", { bg = cp.magneta });
+hl("Indent_G", { bg = cp.magneta });
+
+--[[
+hl("@conceal", { fg = cp.white }); -- Placeholder characters
+]]--
+
+return cp;

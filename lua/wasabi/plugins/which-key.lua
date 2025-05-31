@@ -4,5 +4,10 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	opts = {},
+	opts = {
+		triggers = {
+			{ "<auto>", mode = "nixsotc"},
+			{ "a", mode = { "n", "v" }},
+		},
+	},
 }
