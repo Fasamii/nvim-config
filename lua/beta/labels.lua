@@ -69,7 +69,7 @@ return {
 		colors = {
 			--TODO: tweaks colors e.g.: make TODO highlight darker.
 			err = { "Error", "ErrorMsg", "DiagnosticError", "#dc2626" },
-			warn = { "Warn", "WarningMsg", "DiagnosticWarn", "#fbbf24" },
+			warn = { "Warning", "WarningMsg", "DiagnosticWarn", "#fbbf24" },
 			info = { "Info","DiagnosticInfo", "#2563eb" },
 			default = { "Identifier", "#7c3aed" },
 		},
@@ -86,5 +86,9 @@ return {
 			-- don't replace the (KEYWORDS) placeholder
 			pattern = [[\b(KEYWORDS):]], -- ripgrep regex
 		},
-	}
+	},
+	config = function(_, opts)
+		require("todo-comments").setup(opts);
+		require("wasabi.keymaps").labels();
+	end
 }

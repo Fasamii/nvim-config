@@ -111,10 +111,10 @@ hl("Operator", { fg = cp.cyan });
 hl("Delimiter", { fg = cp.violet });
 hl("MatchParen", { fg = cp.yellow, bold = true });
 -- Diagnostic
-hl("Error", { fg = cp.error });
-hl("ErrorMsg", { fg = cp.error });
-hl("Warning", { fg = cp.warning });
-hl("WarningMsg", { fg = cp.warning });
+hl("Error", { fg = cp.error, bold = true });
+hl("ErrorMsg", { fg = cp.error, bold = true });
+hl("Warning", { fg = cp.warning, bold = true });
+hl("WarningMsg", { fg = cp.warning, bold = true });
 ----------------
 -- Treesitter --
 ----------------
@@ -122,6 +122,7 @@ hl("WarningMsg", { fg = cp.warning });
 hl("@comment", { fg = cp.white_dark });
 hl("@comment.documentation", { fg = cp.white_dimm });
 hl("@special.comment", { fg = cp.white_dark, bold = true });
+hl("@comment.error", { fg = cp.error });
 hl("@preproc", { fg = cp.orange });
 -- Keyword
 hl("@keyword", { fg = cp.cyan });
@@ -138,9 +139,7 @@ hl("@define", { fg = cp.magneta });
 hl("@macro", { fg = cp.magneta });
 -- Identifier
 hl("@identifier", { fg = cp.purple });
-hl("@property", { fg = cp.purple }); -- Object properties -- TODO: check if that exists
-hl("@symbol", { bg = cp.purple }); -- Symbols -- TODO: check if that exists
-hl("@field", { fg = cp.purple }); -- Object and struct fields --TODO: check if that exists
+hl("@property", { fg = cp.purple });
 hl("@variable", { fg = cp.purple });
 hl("@variable.builtin", { fg = cp.purple, bold = true });
 hl("@variable.property", { fg = cp.purple });
@@ -152,16 +151,15 @@ hl("@function.call", { fg = cp.purple, bold = true });
 hl("@parameter", { fg = cp.purple });
 hl("@method.call", { bg = cp.purple, bold = true });
 hl("@method", { fg = cp.purple, bold = true });
-hl("@constructor", { fg = cp.pink, bold = true }); --TODO: for some reason treesitter consider {} pretenses as constructors
+hl("@constructor", { fg = cp.pink, bold = true });
 hl("@label", { fg = cp.purple, bold = true });
 -- Type
---
 hl("@type", { fg = cp.yellow });
 hl("@type.builtin", { fg = cp.yellow });
 hl("@type.qualifier", { fg = cp.yellow });
-hl("@type.definition", { bg = cp.yellow }); -- Type definitions 
+hl("@type.definition", { bg = cp.yellow });
 hl("@storageclass", { fg = cp.yellow });
-hl("@namespace", { fg = cp.yellow }); -- TODO: consider other color for constant
+hl("@namespace", { fg = cp.yellow });
 hl("@constant", { fg = cp.yellow, bold = true });
 hl("@constant.builtin", { fg = cp.yellow, bold = true });
 hl("@constant.macro", { fg = cp.magneta });
@@ -170,11 +168,11 @@ hl("@lsp.type.structure", { fg = cp.yellow, bold = true });
 -- Literal
 hl("@null", { fg = cp.red });
 hl("@string", { fg = cp.green });
-hl("@string.regex", { fg = cp.magneta }); -- Regular expressions
-hl("@string.escape", { fg = cp.magneta }); -- Escape sequences
-hl("@string.special", { fg = cp.magneta }); -- Special strings
+hl("@string.regex", { fg = cp.magneta });
+hl("@string.escape", { fg = cp.magneta });
+hl("@string.special", { fg = cp.magneta });
 hl("@character", { fg = cp.red });
-hl("@character.special", { fg = cp.red }); -- Special character
+hl("@character.special", { fg = cp.red });
 hl("@number", { fg = cp.red });
 hl("@boolean", { fg = cp.red });
 hl("@float", { fg = cp.red });
@@ -183,19 +181,17 @@ hl("@punctuation.bracket", { fg = cp.violet }); -- Brackets, braces, parentheses
 hl("@punctuation.delimiter", { fg = cp.violet }); -- Delimiters (commas, colons, ...)
 hl("@punctuation.special", { fg = cp.violet }); -- Special punctuation
 -- Operator 
-hl("@operator", { fg = cp.agneta });
--- -- util
-hl("@error", { fg = cp.error });
-hl("@none", { fg = cp.purple });
+hl("@operator", { fg = cp.magneta, bold = true }); --TODO: consider other color for operator
 --------------
 ---- util ----
 --------------
 --------------
 -- spelling --
 --------------
-hl("SpellBad", { undercurl = true, sp = cp.error });
+hl("SpellBad", { undercurl = true, sp = cp.error, bold = true });
 hl("SpellCap", { undercurl = true, sp = cp.warning });
--- TODO: SpellLocal, SpellRare
+hl("SpellRare", { bold = true }); --TODO: consider treating it the same as SpellBad
+hl("SpellLocal", {});
 ------------
 -- status --
 ------------
@@ -257,20 +253,3 @@ hl("WhichKeyGroup", { fg = cp.cyan });
 -- hl("WhichKeyIconGrey", { bg = cp.red });
 -- hl("WhichKeyTitle", { bg = cp.red });
 hl("WhichKeyNormal", { bg = cp.black_shadow });
------------------
--- indentation --
------------------
--- TODO: do the indentation highlights group (only if you decide to use indent plugin)
-hl("Indent_A", { bg = cp.magneta });
-hl("Indent_B", { bg = cp.magneta });
-hl("Indent_C", { bg = cp.magneta });
-hl("Indent_D", { bg = cp.magneta });
-hl("Indent_E", { bg = cp.magneta });
-hl("Indent_F", { bg = cp.magneta });
-hl("Indent_G", { bg = cp.magneta });
-
---[[
-hl("@conceal", { fg = cp.white }); -- Placeholder characters
-]]--
-
-return cp;

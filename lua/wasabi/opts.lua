@@ -46,13 +46,23 @@ vim.g.netrw_localrmdir = "rm -rf";
 vim.g.netrw_preview = 1;       -- 1: preview file under cursor on <CR>
 vim.g.netrw_fastbrowse = 0;       -- 1: enable caching for faster browsing
 
-vim.opt.updatetime = 50;
 vim.opt.isfname:append("@-@");
-
 vim.opt.hlsearch = true;
 
+vim.opt.updatetime = 50;
 vim.diagnostic.config({
-	signs = false,
 	virtual_text = false,
 	virtual_lines = true,
+	signs = false,
+	underline = false,
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		focusable = false,
+		style = "minimal",
+		border = "solid",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
 });
