@@ -24,6 +24,8 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "prev search and center" });
 vim.keymap.set("v", ">", ">gv", { desc = "indent right without removing highlight" });
 vim.keymap.set("v", "<", "<gv", { desc = "indent left without removing highlight" });
 
+vim.keymap.set("v", "<leader>gc", "<leader>gcgv", { desc = "toogle comment" });
+
 -- quality of life
 vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", { desc = "moves lines down in visual mode" });
 vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", { desc = "moves lines down in visual mode" });

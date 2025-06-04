@@ -37,5 +37,7 @@ require("lazy").setup({
 		{ import = "beta.lsp", enabled = true },
 		{ import = "beta.completition", enabled = true },
 		{ import = "beta.labels", enabled = true },
+		{ import = "beta.notifications", enabled = true },
+		{ import = "beta.peek-line", enabled = true },
 	},
 });
