@@ -59,7 +59,6 @@ return { {
 		{ "folke/lazydev.nvim" },
 	},
 	config = function()
-
 		local notify = function(msg, ll)
 			local ok, fidget = pcall(require, "fidget");
 			if ok then
@@ -83,15 +82,16 @@ return { {
 			properties = { "documentation", "detail", "additionalTextEdits" }
 		};
 
-
 		local servers = {};
+
 
 		local current_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:match("@(.+)"), ":h");
 		local langs_dir = current_dir .. "/languages";
+		local files = vim.fn.glob(langs_dir .. "/*.lua", false, true);
+
 		if vim.fn.isdirectory(langs_dir) == 0 then
-			notify("Lang directory not found at " .. langs_dir, vim.log.levels.ERROR);
+			notify("Lang directory not found at " .. langs_dir .. " (using defaults)", vim.log.levels.ERROR);
 		else
-			local files = vim.fn.glob(langs_dir .. "/*.lua", false, true);
 			for _, file_path in ipairs(files) do
 				local ok, config = pcall(dofile, file_path);
 				if ok and type(config) == "table" then
@@ -99,31 +99,35 @@ return { {
 						if type(server_config) == "table" then
 							servers[server_name] = server_config;
 						else
-							notify("[" .. file_path .. "] expected table get " .. type(server_config),
+							notify(
+								"[" ..
+								file_path .. "] expected <table>, got <" .. type(server_config) .. ">",
 								vim.log.levels.ERROR);
 						end
 					end
 				else
 					notify(
-						"[" .. file_path .. "] expected table get " .. type(config), vim.log.levels.ERROR);
+						"[" .. file_path .. "] expected <table>, got <" .. type(config) .. ">",
+						vim.log.levels.ERROR);
 				end
 			end
-		end
-		if vim.tbl_isempty(servers) then
-			print("servers table empty");
-			-- TODO: fallback loading (using require)
-		end
-		for server, config in pairs(servers) do
-			local server_config = vim.tbl_deep_extend("force", {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			}, config);
-			vim.lsp.config[server] = server_config;
-		end
-		for server, _ in pairs(servers) do
-			local ok, err = pcall(vim.lsp.enable, server);
-			if not ok then
-				notify("Failed to enable [" .. server .. "] (" .. tostring(err) .. ")", vim.log.level.ERROR);
+			if vim.tbl_isempty(servers) then
+				notify("Failed to retrive ls server configs, (using defaults)", vim.log.levels.WARN);
+			else
+				for server, config in pairs(servers) do
+					local server_config = vim.tbl_deep_extend("force", {
+						on_attach = on_attach,
+						capabilities = capabilities,
+					}, config);
+					vim.lsp.config[server] = server_config;
+				end
+			end
+			for server, _ in pairs(servers) do
+				local ok, err = pcall(vim.lsp.enable, server);
+				if not ok then
+					notify("Failed to enable [" .. server .. "] (" .. tostring(err) .. ")", vim.log.level
+						.ERROR);
+				end
 			end
 		end
 	end
