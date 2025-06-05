@@ -2,7 +2,7 @@ return {
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
-				cargo = {
+				cargo       = {
 					allFeatures = true,
 					loadOutDirsFromCheck = true,
 					buildScripts = {
@@ -10,16 +10,17 @@ return {
 					},
 				},
 				checkOnSave = {
-					command = "clippy",      -- run `cargo clippy` instead of `cargo check`
+					command = "clippy", -- run `cargo clippy` instead of `cargo check`
 					extraArgs = { "--workspace", "--", "-D", "warnings" },
 				},
-				procMacro    = { enable = true },
+				procMacro   = { enable = true },
 				diagnostics = {
 					enable       = true,
 					experimental = { enable = true },
 				},
-				hover = { actions = { enable = true } },
-				inlayHints = {
+				hover       = { actions = { enable = true } },
+				inlayHints  = {
+					enable = true,
 					bindingModeHints = {
 						enable = false,
 					},
@@ -31,10 +32,19 @@ return {
 						minLines = 25,
 					},
 					closureReturnTypeHints = {
-						enable = "always",
+						enable = "never", -- or "always" or "with_block"
+					},
+					discriminantHints = {
+						enable = "never", -- or "always" or "fieldless"
+					},
+					expressionAdjustmentHints = {
+						enable = "never", -- or "always" or "reborrow"
+					},
+					implicitDrops = {
+						enable = false,
 					},
 					lifetimeElisionHints = {
-						enable = "always",
+						enable = "never", -- or "always" or "skip_trivial"
 						useParameterNames = false,
 					},
 					maxLength = 25,
@@ -42,7 +52,7 @@ return {
 						enable = true,
 					},
 					reborrowHints = {
-						enable = "never",
+						enable = "never", -- or "always" or "mutable"
 					},
 					renderColons = true,
 					typeHints = {

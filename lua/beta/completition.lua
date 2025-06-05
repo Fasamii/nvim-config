@@ -1,56 +1,33 @@
 return {
-	"saghen/blink.cmp",
-	lazy = false,
-	event = "InsertEnter",
-	version = '*',
-	build = "cargo build --release",
-	dependencies = { 
-		"rafamadriz/friendly-snippets",
-		{
-			"saghen/blink.compat",
-			optional = true,
-			opts = {},
-			version = "*",
-		},
-	},
+	'saghen/blink.cmp',
+	dependencies = { 'rafamadriz/friendly-snippets' },
+	build = 'cargo build --release',
 	opts = {
-		keymap = { preset = "default" },
-		appearance = { 
-			nerd_font_variant = "mono" 
-		},
+		-- See :h blink-cmp-config-keymap for defining your own keymap
+		keymap = { preset = 'default' },
+
+		appearance = { nerd_font_variant = 'mono' },
+
 		completion = {
-			accept = {
-				auto_brackets = {
-					enabled = true,
-				},
-			},
 			documentation = {
-				auto_show = true,
-				auto_show_delay_ms = 200,
+				auto_show = true
 			},
-			ghost_text = {
-				enabled = vim.g.ai_cmp or false,
-			},
+			menu = {
+				max_items = 200,
+				scrollbar = true,
+				draw = {
+					columns = {{ "kind_icon" }, { "label", "label_description", gap = 1 }},
+					components = {}
+				}
+			}
 		},
+		-- Default list of enabled providers defined so that you can extend it
+		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = {
-				"lsp", 
-				"path",
-				"snippets",
-				"buffer",
-				"lazydev",
-			},
-			providers = {
-				lazydev = {
-					name = "LazyDev",
-					module = "lazydev.integrations.blink",
-					score_offset = 100,
-				},
-			},
+			default = { 'lsp', 'path', 'snippets', 'buffer' },
 		},
-		fuzzy = {
-			implementation = "prefer_rust_with_warning",
-		},
+
+		fuzzy = { implementation = "prefer_rust_with_warning" }
 	},
-	opts_extend = { "sources.default" }
+	opts_extend = { "sources.default" },
 }

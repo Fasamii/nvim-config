@@ -100,14 +100,14 @@ return { {
 							servers[server_name] = server_config;
 						else
 							notify(
-								"[" ..
-								file_path .. "] expected <table>, got <" .. type(server_config) .. ">",
+								"expected <table>, got <" .. type(server_config) .. "> at [" ..
+								file_path .. "]",
 								vim.log.levels.ERROR);
 						end
 					end
 				else
 					notify(
-						"[" .. file_path .. "] expected <table>, got <" .. type(config) .. ">",
+						"expected <table>, got <" .. type(config) .. "> at [" .. file_path .. "]",
 						vim.log.levels.ERROR);
 				end
 			end
