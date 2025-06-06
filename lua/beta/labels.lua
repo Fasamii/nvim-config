@@ -11,7 +11,7 @@ return {
 				signs = true,
 				icon = "󰅗 ",
 				color = "err",
-				alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "ERR"},
+				alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "ERR" },
 			},
 			TODO = {
 				signs = true,
@@ -42,6 +42,7 @@ return {
 			},
 			TEST = {
 				signs = false,
+				icon = "󰿦 ",
 				alt = { "TESTING", "PASSED", "FAILED" },
 			},
 		},
@@ -58,19 +59,19 @@ return {
 			multiline = true, -- enable multine todo comments
 			multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
 			multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
-			before = "bg", -- "fg" or "bg" or empty
-			keyword = "bg", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
-			after = "empty", -- "fg" or "bg" or empty
+			before = "bg",    -- "fg" or "bg" or empty
+			keyword = "bg",   -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
+			after = "empty",  -- "fg" or "bg" or empty
 			pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
 			comments_only = true, -- uses treesitter to match keywords in comments only
 			max_line_len = 400, -- ignore lines longer than this
-			exclude = {}, -- list of file types to exclude highlighting
+			exclude = {},     -- list of file types to exclude highlighting
 		},
 		colors = {
 			--TODO: tweaks colors e.g.: make TODO highlight darker.
 			err = { "Error", "ErrorMsg", "DiagnosticError", "#dc2626" },
 			warn = { "Warning", "WarningMsg", "DiagnosticWarn", "#fbbf24" },
-			info = { "Info","DiagnosticInfo", "#2563eb" },
+			info = { "Info", "DiagnosticInfo", "#2563eb" },
 			default = { "Identifier", "#7c3aed" },
 		},
 		search = {
