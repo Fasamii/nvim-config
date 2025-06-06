@@ -55,9 +55,9 @@ vim.keymap.set("n", "<leader>sk", "<C-w>k", { desc = "split window horizontaly" 
 vim.keymap.set("n", "<leader>sl", "<C-w>l", { desc = "close current split" });
 
 vim.keymap.set("n", "<leader>srh", "<C-w>>", { desc = "resize split window (left)" });
-vim.keymap.set("n", "<leader>srl", "<C-w><", { desc = "resize split window (left)" });
-vim.keymap.set("n", "<leader>srk", "<C-w>+", { desc = "resize split window (left)" });
-vim.keymap.set("n", "<leader>srj", "<C-w>-", { desc = "resize split window (left)" });
+vim.keymap.set("n", "<leader>srl", "<C-w><", { desc = "resize split window (right)" });
+vim.keymap.set("n", "<leader>srk", "<C-w>+", { desc = "resize split window (up)" });
+vim.keymap.set("n", "<leader>srj", "<C-w>-", { desc = "resize split window (down)" });
 vim.keymap.set("n", "<leader>sr=", "<C-w>=", { desc = "resize split window (left)" });
 
 vim.keymap.set("n", "<leader>fo", vim.cmd.Ex, { desc = "open file explorer" });

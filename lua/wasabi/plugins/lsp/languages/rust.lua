@@ -9,10 +9,7 @@ return {
 						enable = true
 					},
 				},
-				checkOnSave = {
-					command = "clippy", -- run `cargo clippy` instead of `cargo check`
-					extraArgs = { "--workspace", "--", "-D", "warnings" },
-				},
+				checkOnSave = true,
 				procMacro   = { enable = true },
 				diagnostics = {
 					enable       = true,

@@ -69,21 +69,13 @@ return { {
 		end
 
 		local on_attach = function(client, bufnr)
+			notify("on attach call for: " .. tostring(client.name), vim.log.levels.ERROR);
 			require("wasabi.keymaps").lsp(client, bufnr);
 			vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc";
 			if vim.lsp.inlay_hint and client.supports_method("textDocument/inlayHint") then
 				vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
 			end
 		end
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities();
-		capabilities.textDocument.completion.completionItem.snippetSupport = true;
-		capabilities.textDocument.completion.completionItem.resolveSupport = {
-			properties = { "documentation", "detail", "additionalTextEdits" }
-		};
-
-		local servers = {};
-
 
 		local current_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:match("@(.+)"), ":h");
 		local langs_dir = current_dir .. "/languages";
@@ -97,7 +89,15 @@ return { {
 				if ok and type(config) == "table" then
 					for server_name, server_config in pairs(config) do
 						if type(server_config) == "table" then
-							servers[server_name] = server_config;
+							vim.lsp.config[server_name] = vim.tbl_deep_extend("force", server_config,
+								{ on_attach = on_attach });
+							local enable_ok, enable_err = pcall(vim.lsp.enable, server_name);
+							if not enable_ok then
+								notify(
+									"Failed to enable [" ..
+									server_name .. "] (" .. tostring(enable_err) .. ")",
+									vim.log.level.ERROR);
+							end
 						else
 							notify(
 								"expected <table>, got <" .. type(server_config) .. "> at [" ..
@@ -109,24 +109,6 @@ return { {
 					notify(
 						"expected <table>, got <" .. type(config) .. "> at [" .. file_path .. "]",
 						vim.log.levels.ERROR);
-				end
-			end
-			if vim.tbl_isempty(servers) then
-				notify("Failed to retrive ls server configs, (using defaults)", vim.log.levels.WARN);
-			else
-				for server, config in pairs(servers) do
-					local server_config = vim.tbl_deep_extend("force", {
-						on_attach = on_attach,
-						capabilities = capabilities,
-					}, config);
-					vim.lsp.config[server] = server_config;
-				end
-			end
-			for server, _ in pairs(servers) do
-				local ok, err = pcall(vim.lsp.enable, server);
-				if not ok then
-					notify("Failed to enable [" .. server .. "] (" .. tostring(err) .. ")", vim.log.level
-						.ERROR);
 				end
 			end
 		end
