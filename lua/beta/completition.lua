@@ -13,7 +13,6 @@ return {
 				auto_show = true
 			},
 			menu = {
-				max_items = 200,
 				scrollbar = true,
 				draw = {
 					columns = {{ "kind_icon" }, { "label", "label_description", gap = 1 }},

@@ -76,16 +76,20 @@ return { {
 			end
 		end
 
+		local capabilities = vim.lsp.protocol.make_client_capabilities();
+		local ok, blink = pcall(require, "blink.cmp");
+		if ok then capabilities = vim.tbl_deep_extend("force", capabilities, blink.get_lsp_capabilities()); end
+
 		local lsp_root_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:match("@(.+)"), ":h");
 		local lsp_langs_dir = lsp_root_dir .. "/languages";
-		local lsp_ls_server_config_files = vim.fn.glob(lsp_langs_dir .. "/*.lua", false, true);
+		local lsp_ls_config_files = vim.fn.glob(lsp_langs_dir .. "/*.lua", false, true);
 
 		if vim.fn.isdirectory(lsp_langs_dir) == 0 then
 			notify("Lang directory not found at " .. lsp_langs_dir .. " (using defaults)", vim.log.levels.ERROR);
 			-- TODO: add fallback lsp enabling functionality
 			-- TEST: test how lsp is behaving on fallback
 		else
-			for _, lsp_ls_config_file in ipairs(lsp_ls_server_config_files) do
+			for _, lsp_ls_config_file in ipairs(lsp_ls_config_files) do
 				local ok, config = pcall(dofile, lsp_ls_config_file);
 				if not ok or not type(config) == "table" then
 					notify("expected <table>, got <" .. type(config) .. "> at [" .. lsp_ls_config_file .. "]",
@@ -99,11 +103,15 @@ return { {
 								vim.log.levels.ERROR);
 						else
 							vim.lsp.config[ls_name] = vim.tbl_deep_extend(
-								"force", ls_config, { on_attach = on_attach });
+								"force", ls_config, {
+									on_attach = on_attach,
+									capabilities = capabilities,
+								});
 							local enabled, enable_err = pcall(vim.lsp.enable, ls_name);
 							if not enabled then
 								notify(
-								"Failed to enable [" .. ls_name .. "] (" .. tostring(enable_err) .. ")",
+									"Failed to enable [" ..
+									ls_name .. "] (" .. tostring(enable_err) .. ")",
 									vim.log.level.ERROR);
 							end
 						end
