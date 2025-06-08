@@ -11,9 +11,8 @@ vim.opt.expandtab = false;
 vim.opt.tabstop = 6;
 vim.opt.softtabstop = 6;
 vim.opt.shiftwidth = 6;
-vim.opt.autoindent = true; -- Check if you like it
+vim.opt.autoindent = true;  -- Check if you like it
 vim.opt.smartindent = true; -- Check if you like it
-
 -- vim.opt.colorcolumn = "100"; -- in case you need that stupid ruler
 
 vim.opt.wrap = true;
@@ -43,8 +42,8 @@ vim.g.netrw_winsize = 18;
 vim.g.netrw_sort_by = "name";
 vim.g.netrw_localcopydircmd = "cp -r";
 vim.g.netrw_localrmdir = "rm -rf";
-vim.g.netrw_preview = 1;       -- 1: preview file under cursor on <CR>
-vim.g.netrw_fastbrowse = 0;       -- 1: enable caching for faster browsing
+vim.g.netrw_preview = 1;    -- 1: preview file under cursor on <CR>
+vim.g.netrw_fastbrowse = 0; -- 1: enable caching for faster browsing
 
 vim.opt.isfname:append("@-@");
 vim.opt.hlsearch = true;

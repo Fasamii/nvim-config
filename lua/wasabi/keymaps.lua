@@ -71,12 +71,23 @@ end, { desc = "copies file path to clipboard" });
 
 ---- PLUGINS ----
 
--- TODO: change mappings of lsp foo's 
+-- TODO: change mappings of lsp foo's
 function M.lsp(_, bufnr)
 	opts = vim.tbl_deep_extend("force", opts, { buffer = bufnr });
 
-	vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, vim.tbl_deep_extend("force", opts, { desc = "open lsp diagnostics" }));
-	vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, vim.tbl_deep_extend("force", opts, { desc = "format current buffer" }));
+
+	vim.lsp.buf.format({
+		async = true,
+		formatting_options = {
+			tabSize = 6,
+			insertSpaces = false, -- Use tabs instead of spaces
+		}
+	})
+	vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float,
+		vim.tbl_deep_extend("force", opts, { desc = "open lsp diagnostics" }));
+	vim.keymap.set("n", "<leader>bf", function()
+		vim.lsp.buf.format({ async = true, formatting_options = { tabSize = 6, insertSpaces = false } })
+	end, vim.tbl_deep_extend("force", opts, { desc = "format current buffer" }));
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "go to definition" }))
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "show references" }))
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "go to declaration" }))
