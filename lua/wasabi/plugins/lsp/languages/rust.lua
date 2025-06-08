@@ -9,7 +9,9 @@ return {
 						enable = true
 					},
 				},
-				checkOnSave = true,
+				checkOnSave = {
+					enable = true,
+				},
 				procMacro   = { enable = true },
 				diagnostics = {
 					enable       = true,

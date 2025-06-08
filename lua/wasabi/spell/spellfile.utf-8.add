@@ -180,3 +180,14 @@ s/!
 YAML
 JSON
 runtimepath
+io
+ErrorKind
+NotFound
+cmd
+#iw
+ciw/!
+#election
+selection/!
+selection
+llm
+spellfile

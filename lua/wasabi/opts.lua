@@ -50,8 +50,8 @@ vim.opt.hlsearch = true;
 
 vim.opt.updatetime = 50;
 vim.diagnostic.config({
-	virtual_text = false,
-	virtual_lines = true,
+	virtual_text = true,
+	virtual_lines = false,
 	signs = false,
 	underline = false,
 	update_in_insert = false,
