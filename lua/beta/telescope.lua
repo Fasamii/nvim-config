@@ -7,6 +7,7 @@ return {
 	lazy = false,
 	keys = {
     		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+    		{ "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Find Files" },
 		{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "Find Grep" },
 		{ "<leader>fg", "<cmd>Telescope find_files cwd=$HOME <CR>", desc = "Find Global" },
 		{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help" },
