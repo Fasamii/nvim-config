@@ -3,6 +3,38 @@ return {
 	lazy = false,
 	dependencies = { "MunifTanjim/nui.nvim" },
 	opts = {
+		disable_mouse = false,
+		restriction_mode = "hint",
+		callback = function(msg)
+			local ok, fidget = pcall(require, "fidget");
+			if ok then
+				fidget.notify(msg, vim.log.levels.ERROR);
+			else
+				local buf = vim.api.nvim_create_buf(false, true);
+				vim.api.nvim_buf_set_lines(buf, 0, -1, false, { msg });
+
+				local width = string.len(msg);
+				local height = 1;
+				local opts = {
+					relative = 'editor',
+					width = width,
+					height = height,
+					col = vim.o.columns - width,
+					row = vim.o.lines - height - 3,
+					style = "minimal",
+					border = "solid"
+				};
+
+				local win = vim.api.nvim_open_win(buf, false, opts);
+
+				-- Auto-close after 3 seconds
+				vim.defer_fn(function()
+					if vim.api.nvim_win_is_valid(win) then
+						vim.api.nvim_win_close(win, true);
+					end;
+				end, 3000);
+			end;
+		end,
 		-- -- Disabling hints
 		--
 		-- disabled_keys = {
