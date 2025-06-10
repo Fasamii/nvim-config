@@ -110,11 +110,6 @@ hi("Operator", { fg = cp.cyan });
 -- Delimiter
 hi("Delimiter", { fg = cp.violet });
 hi("MatchParen", { fg = cp.yellow, bold = true });
--- Diagnostic
-hi("Error", { fg = cp.error, bold = true });
-hi("ErrorMsg", { fg = cp.error, bold = true });
-hi("Warning", { fg = cp.warning, bold = true });
-hi("WarningMsg", { fg = cp.warning, bold = true });
 ----------------
 -- Treesitter --
 ----------------
@@ -183,42 +178,74 @@ hi("@punctuation.special", { fg = cp.violet }); -- Special punctuation
 -- Operator 
 hi("@operator", { fg = cp.magneta, bold = true }); --TODO: consider other color for operator
 --------------
----- util ----
---------------
---------------
 -- spelling --
 --------------
 hi("SpellBad", { undercurl = true, sp = cp.error, bold = true });
 hi("SpellCap", { undercurl = true, sp = cp.warning });
 hi("SpellRare", { bold = true }); --TODO: consider treating it the same as SpellBad
 hi("SpellLocal", {});
-------------
--- status --
-------------
-hi("Error", { fg = cp.error });
-hi("ErrorMsg", { fg = cp.error });
+-----------------
+-- Diagnostics --
+-----------------
 hi("DiagnosticError", { fg = cp.error });
+hi("ErrorMsg", { fg = cp.error });
+hi("Error", { fg = cp.error });
 
-hi("Warn", { fg = cp.warn });
-hi("WarningMsg", { fg = cp.warn });
 hi("DiagnosticWarn", { fg = cp.warn });
+hi("WarningMsg", { fg = cp.warn });
+hi("Warn", { fg = cp.warn });
 
-hi("Info", { fg = cp.info });
 hi("DiagnosticInfo", { fg = cp.info });
+hi("Info", { fg = cp.info });
 ---------
 -- git --
 ---------
 hi("GitAdd", { fg = cp.util_lv1, bold = true });
 hi("GitMod", { fg = cp.util_lv2, bold = true });
 hi("GitRem", { fg = cp.util_lv3, bold = true });
-------------------
--- status lines --
-------------------
+-----------------
+-- status line --
+-----------------
 -- nvim builtin
 hi("StatusLine", { bg = cp.black_dark, fg = cp.white });
 hi("TabLineFill", { bg = cp.black_dark });
 hi("TabLineSel", { bg = cp.black_dimm, fg = cp.magneta, bold = true });
 hi("TabLine", { bg = cp.black_dark, fg = cp.violet });
+-- TODO: make lualine work without overwriting it groups
+-- For a reference:
+--return {
+--   normal = {
+--     a = {bg = colors.gray, fg = colors.black, gui = 'bold'},
+--     b = {bg = colors.lightgray, fg = colors.white},
+--     c = {bg = colors.darkgray, fg = colors.gray}
+--   },
+--   insert = {
+--     a = {bg = colors.blue, fg = colors.black, gui = 'bold'},
+--     b = {bg = colors.lightgray, fg = colors.white},
+--     c = {bg = colors.lightgray, fg = colors.white}
+--   },
+--   visual = {
+--     a = {bg = colors.yellow, fg = colors.black, gui = 'bold'},
+--     b = {bg = colors.lightgray, fg = colors.white},
+--     c = {bg = colors.inactivegray, fg = colors.black}
+--   },
+--   replace = {
+--     a = {bg = colors.red, fg = colors.black, gui = 'bold'},
+--     b = {bg = colors.lightgray, fg = colors.white},
+--     c = {bg = colors.black, fg = colors.white}
+--   },
+--   command = {
+--     a = {bg = colors.green, fg = colors.black, gui = 'bold'},
+--     b = {bg = colors.lightgray, fg = colors.white},
+--     c = {bg = colors.inactivegray, fg = colors.black}
+--   },
+--   inactive = {
+--     a = {bg = colors.darkgray, fg = colors.gray, gui = 'bold'},
+--     b = {bg = colors.darkgray, fg = colors.gray},
+--     c = {bg = colors.darkgray, fg = colors.gray}
+--   }
+-- }
+-- require('lualine').setup {options = {theme = gruvbox}}
 -- lualine
 hi("LL_N_A", { bg = cp.blue, fg = cp.bg_solid, bold = true });
 hi("LL_N_B", { fg = cp.violet, bold = true });

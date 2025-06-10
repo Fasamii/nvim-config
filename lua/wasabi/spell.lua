@@ -7,9 +7,11 @@ vim.opt.spellfile = spell_dir .. "/spellfile.utf-8.add";
 local function enable_spell()
 	vim.opt.spell = true;
 	vim.opt.spelllang = languages;
+	vim.cmd("syntax spell toplevel");
 end;
 local function disable_spell()
 	vim.opt.spell = false;
+	vim.cmd("syntax spell notoplevel");
 end;
 function SpellingToggle()
 	if vim.opt.spell:get() then

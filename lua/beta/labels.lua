@@ -69,9 +69,9 @@ return {
 		},
 		colors = {
 			--TODO: tweaks colors e.g.: make TODO highlight darker.
-			err = { "Error", "ErrorMsg", "DiagnosticError", "#dc2626" },
-			warn = { "Warning", "WarningMsg", "DiagnosticWarn", "#fbbf24" },
-			info = { "Info", "DiagnosticInfo", "#2563eb" },
+			err = { "DiagnosticError", "ErrorMsg", "Error" , "#dc2626" },
+			warn = { "DiagnosticWarn", "WarningMsg", "Warning", "#fbbf24" },
+			info = { "DiagnosticInfo", "Info", "#2563eb" },
 			default = { "Identifier", "#7c3aed" },
 		},
 		search = {
