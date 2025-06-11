@@ -32,13 +32,14 @@ return {
 				priority = 30, -- Ordering priority for LSP notification group
 				skip_history = true, -- Whether progress notifications should be omitted from history
 				format_annote = function(msg) -- How to format a progress annotation
-					return msg.title
+					return msg.title;
 				end,
 				format_group_name = function(group) -- How to format a progress notification group's name
-					return tostring(group)
+					return tostring(group);
 				end,
 				overrides = { -- Override options from the default notification config
-					rust_analyzer = { name = "rust-analyzer" },
+					rust_analyzer = { name = "rust" },
+					lua_ls = { name = "lua" },
 				},
 			},
 
@@ -63,9 +64,9 @@ return {
 
 			-- Options related to how notifications are rendered as text
 			view = {
-				stack_upwards = true, -- Display notification items from bottom to top
+				stack_upwards = false, -- Display notification items from bottom to top
 				icon_separator = " ", -- Separator between group name and icon
-				group_separator = "---", -- Separator between notification groups
+				group_separator = "", -- Separator between notification groups
 				group_separator_hl = "Comment", -- Highlight group used for group separator
 				render_message = function(msg, cnt) -- How to render notification messages
 					return cnt == 1 and msg or string.format("(%dx) %s", cnt, msg)

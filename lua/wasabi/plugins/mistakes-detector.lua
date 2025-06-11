@@ -5,6 +5,7 @@ return {
 	opts = {
 		disable_mouse = false,
 		restriction_mode = "hint",
+		timeout = 3000,
 		callback = function(msg)
 			local ok, fidget = pcall(require, "fidget");
 			if ok then

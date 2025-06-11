@@ -13,7 +13,7 @@ local function disable_spell()
 	vim.opt.spell = false;
 	vim.cmd("syntax spell notoplevel");
 end;
-function SpellingToggle()
+local function spelling_toogle()
 	if vim.opt.spell:get() then
 		disable_spell();
 	else
@@ -33,7 +33,7 @@ local tl = {
 -- TODO: make telescope replace word with searched word on enter if no result matches searched word
 --	    make it add good word if entered with that method
 -- TODO: review that foo (it was written by llm)
-function GetSuggestion()
+local function get_suggestion()
 	-- Get current cursor position first
 	local cursor_pos = vim.api.nvim_win_get_cursor(0)
 	local row = cursor_pos[1] - 1 -- Convert to 0-indexed
@@ -127,16 +127,5 @@ function GetSuggestion()
 	}):find()
 end;
 
-vim.keymap.set("n", "zt", SpellingToggle, { noremap = true, silent = true, desc = "Toggle spell checking" });
-vim.keymap.set("n", "zn", function() vim.cmd("normal! ]s") end,
-	{ noremap = true, silent = true, desc = "Next misspelled word" });
-vim.keymap.set("n", "zp", function() vim.cmd("normal! [s") end,
-	{ noremap = true, silent = true, desc = "Previous misspelled word" });
-vim.keymap.set("n", "zg", function() vim.cmd("normal! zg") end,
-	{ noremap = true, silent = true, desc = "Add word to dictionary" });
-vim.keymap.set("n", "zw", function() vim.cmd("normal! zw") end,
-	{ noremap = true, silent = true, desc = "Mark word as incorrect" });
-vim.keymap.set("n", "zs", GetSuggestion,
-	{ noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
-
+require("wasabi.keymaps").spelling(spelling_toogle, get_suggestion);
 enable_spell();

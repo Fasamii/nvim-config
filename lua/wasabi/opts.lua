@@ -27,11 +27,11 @@ vim.opt.termguicolors = true;
 vim.opt.mouse = "a";
 vim.g.editorconfig = true;
 
-vim.opt.undodir = os.getenv("HOME") .. "/.backup/nvim-undo";
+vim.opt.undodir = os.getenv("HOME") .. "/.backup/nvim/undo";
 vim.opt.undofile = true;
-vim.opt.backupdir = os.getenv("HOME") .. "/.backup/nvim-backup";
+vim.opt.backupdir = os.getenv("HOME") .. "/.backup/nvim/backup";
 vim.opt.backup = false;
-vim.opt.directory = os.getenv("HOME") .. "/.backup/nvim-swap";
+vim.opt.directory = os.getenv("HOME") .. "/.backup/nvim/swap";
 vim.opt.swapfile = true;
 
 vim.g.netrw_banner = 0;
@@ -65,3 +65,5 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 });
+
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";

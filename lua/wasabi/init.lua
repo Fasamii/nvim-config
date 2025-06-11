@@ -4,3 +4,4 @@ require("wasabi.plugins");
 require("wasabi.keymaps");
 require("wasabi.tweaks");
 require("wasabi.spell");
+require("wasabi.terminal");

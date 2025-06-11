@@ -1,5 +1,6 @@
 -- TODO: consider adding which-key .add() foo to every binding
 local M = {};
+-- TODO: define opts and then merge it inside each mapping with desc value
 local opts = { nil };
 
 ---- NVIM ----
@@ -24,7 +25,7 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "prev search and center" });
 vim.keymap.set("v", ">", ">gv", { desc = "indent right without removing highlight" });
 vim.keymap.set("v", "<", "<gv", { desc = "indent left without removing highlight" });
 
-vim.keymap.set("v", "<leader>gc", "<leader>gcgv", { desc = "toogle comment" });
+vim.keymap.set("v", "<leader>gc", "<leader>gcgv", { desc = "toggle comment" });
 
 -- quality of life
 vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", { desc = "moves lines down in visual mode" });
@@ -38,6 +39,7 @@ vim.keymap.set("n", "<leader>dl", "0D", { desc = "delete line without new line c
 
 vim.keymap.set("n", "<leader>br", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace word cursor is on globally" });
+
 
 -- tabs
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "create new tab" });
@@ -69,6 +71,26 @@ vim.keymap.set("n", "<leader>gp", function()
 	vim.fn.setreg("\"", filePath);
 end, { desc = "copies file path to clipboard" });
 
+--- MODULES ---
+function M.spelling(toggle, repleace)
+	vim.keymap.set("n", "zt", toggle, { noremap = true, silent = true, desc = "Toggle spell checking" });
+	vim.keymap.set("n", "zn", function() vim.cmd("normal! ]s") end,
+		{ noremap = true, silent = true, desc = "Next misspelled word" });
+	vim.keymap.set("n", "zp", function() vim.cmd("normal! [s") end,
+		{ noremap = true, silent = true, desc = "Previous misspelled word" });
+	vim.keymap.set("n", "zg", function() vim.cmd("normal! zg") end,
+		{ noremap = true, silent = true, desc = "Add word to dictionary" });
+	vim.keymap.set("n", "zw", function() vim.cmd("normal! zw") end,
+		{ noremap = true, silent = true, desc = "Mark word as incorrect" });
+	vim.keymap.set("n", "zs", repleace,
+		{ noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
+end
+
+function M.term(toggle)
+	vim.keymap.set("n", "<leader>ts", toggle, { desc = "toggle terminal" });
+	vim.keymap.set("t", "<leader>ts", toggle, { desc = "toggle terminal" });
+end
+
 ---- PLUGINS ----
 
 -- TODO: change mappings of lsp foo's
@@ -79,13 +101,16 @@ function M.lsp(_, bufnr)
 		vim.tbl_deep_extend("force", opts, { desc = "open lsp diagnostics" }));
 	vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format,
 		vim.tbl_deep_extend("force", opts, { desc = "format current buffer" }));
-	vim.keymap.set("n", "<leader>fd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "go to definition" }))
-	vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "show references" }))
-	vim.keymap.set("n", "<leader>fD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "go to declaration" }))
+	vim.keymap.set("n", "<leader>fd", vim.lsp.buf.definition,
+		vim.tbl_extend("force", opts, { desc = "go to definition" }))
+	vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references,
+		vim.tbl_extend("force", opts, { desc = "show references" }))
+	vim.keymap.set("n", "<leader>fD", vim.lsp.buf.declaration,
+		vim.tbl_extend("force", opts, { desc = "go to declaration" }))
 	vim.keymap.set("n", "<leader>fi", vim.lsp.buf.implementation,
 		vim.tbl_extend("force", opts, { desc = "go to implementation" }))
 	vim.keymap.set("n", "gi", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "show hover info" }))
-	-- TODO: learn what rename is 
+	-- TODO: learn what rename is
 	-- vim.keymap.set("n", "rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename symbol" }))
 	-- TODO: learn what are code actions
 	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))

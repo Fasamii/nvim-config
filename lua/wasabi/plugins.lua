@@ -40,5 +40,6 @@ require("lazy").setup({
 		{ import = "beta.notifications", enabled = true },
 		{ import = "beta.peek-line", enabled = true },
 		{ import = "wasabi.plugins.mistakes-detector", enabled = true },
+		{ import = "beta.session", enabled = true },
 	},
 });
