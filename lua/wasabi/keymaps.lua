@@ -51,10 +51,10 @@ vim.keymap.set("n", "<leader>th", "<cmd>tabp<CR>", { desc = "prev tab" });
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" });
 vim.keymap.set("n", "<leader>sp", "<C-w>s", { desc = "split window horizontaly" });
 vim.keymap.set("n", "<leader>sd", "<cmd>close<CR>", { desc = "close current split" });
-vim.keymap.set("n", "<leader>sh", "<C-w>h", { desc = "split window horizontaly" });
-vim.keymap.set("n", "<leader>sj", "<C-w>j", { desc = "close current split" });
-vim.keymap.set("n", "<leader>sk", "<C-w>k", { desc = "split window horizontaly" });
-vim.keymap.set("n", "<leader>sl", "<C-w>l", { desc = "close current split" });
+vim.keymap.set("n", "<leader>sh", "<C-w>h", { desc = "Move to left split" });
+vim.keymap.set("n", "<leader>sj", "<C-w>j", { desc = "Move to bottom split" });
+vim.keymap.set("n", "<leader>sk", "<C-w>k", { desc = "Move to upper split" });
+vim.keymap.set("n", "<leader>sl", "<C-w>l", { desc = "Move to right split" });
 
 vim.keymap.set("n", "<leader>srh", "<C-w>>", { desc = "resize split window (left)" });
 vim.keymap.set("n", "<leader>srl", "<C-w><", { desc = "resize split window (right)" });
@@ -87,8 +87,23 @@ function M.spelling(toggle, repleace)
 end
 
 function M.term(toggle)
-	vim.keymap.set("n", "<leader>ts", toggle, { desc = "toggle terminal" });
-	vim.keymap.set("t", "<leader>ts", toggle, { desc = "toggle terminal" });
+	vim.keymap.set("n", "<leader>ts", function()
+		toggle("right");
+	end, { desc = "toggle terminal on right" });
+	vim.keymap.set("t", "<leader>ts", function()
+		toggle("right");
+	end, { desc = "toggle terminal on right" });
+	vim.keymap.set("n", "<leader>tn", function()
+		toggle("bottom");
+	end, { desc = "toggle terminal on bottom" });
+	vim.keymap.set("t", "<leader>tn", function()
+		toggle("bottom");
+	end, { desc = "toggle terminal on bottom" });
+	vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" });
+	vim.keymap.set("t", "<leader>sh", "<C-\\><C-n><C-w>h", { desc = "Move to left split" });
+	vim.keymap.set("t", "<leader>sj", "<C-\\><C-n><C-w>j", { desc = "Move to down split" });
+	vim.keymap.set("t", "<leader>sk", "<C-\\><C-n><C-w>k", { desc = "Move to upper split" });
+	vim.keymap.set("t", "<leader>sl", "<C-\\><C-n><C-w>l", { desc = "Move to right split" });
 end
 
 ---- PLUGINS ----
