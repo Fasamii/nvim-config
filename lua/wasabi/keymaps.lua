@@ -93,13 +93,15 @@ function M.term(toggle)
 	vim.keymap.set("t", "<leader>ts", function()
 		toggle("right");
 	end, { desc = "toggle terminal on right" });
-	vim.keymap.set("n", "<leader>tn", function()
+	vim.keymap.set("n", "<leader>to", function()
 		toggle("bottom");
 	end, { desc = "toggle terminal on bottom" });
-	vim.keymap.set("t", "<leader>tn", function()
+	vim.keymap.set("t", "<leader>to", function()
 		toggle("bottom");
 	end, { desc = "toggle terminal on bottom" });
-	vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" });
+
+	vim.keymap.set("t", "t<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" });
+
 	vim.keymap.set("t", "<leader>sh", "<C-\\><C-n><C-w>h", { desc = "Move to left split" });
 	vim.keymap.set("t", "<leader>sj", "<C-\\><C-n><C-w>j", { desc = "Move to down split" });
 	vim.keymap.set("t", "<leader>sk", "<C-\\><C-n><C-w>k", { desc = "Move to upper split" });
