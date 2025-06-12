@@ -41,5 +41,6 @@ require("lazy").setup({
 		{ import = "beta.peek-line", enabled = true },
 		{ import = "wasabi.plugins.mistakes-detector", enabled = true },
 		{ import = "beta.session", enabled = true },
+		{ import = "beta.undo-tree", enabled = true },
 	},
 });

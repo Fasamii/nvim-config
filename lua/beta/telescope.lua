@@ -2,21 +2,16 @@ return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		{ "nvim-lua/plenary.nvim", },
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "nvim-tree/nvim-web-devicons", },
 	},
 	lazy = false,
-	keys = {
-    		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-    		{ "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Find Files" },
-		{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "Find Grep" },
-		{ "<leader>fg", "<cmd>Telescope find_files cwd=$HOME <CR>", desc = "Find Global" },
-		{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help" },
-	},
 	opts = {
-			defaults = {
+		path_display = { "smart" },
+		defaults = {
 			border = true,
 			color_devicons = true,
-			borderchars = {"─","│","─","│","┌","┐","┘","└"},
+			borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 			prompt_prefix = " ",
 			layout_strategy = "flex",
 			layout_config = {
@@ -50,4 +45,10 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		local plugin = require("telescope");
+		plugin.load_extension("fzf");
+		plugin.setup(opts);
+		require("wasabi.keymaps").telescope();
+	end
 }

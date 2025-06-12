@@ -110,6 +110,14 @@ end
 
 ---- PLUGINS ----
 
+function M.telescope()
+	vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find Files" });
+	vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Find Files" });
+	vim.keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Find Grep" });
+	vim.keymap.set("n", "<leader>fg", "<cmd>Telescope find_files cwd=$HOME <CR>", { desc = "Find Global" });
+	vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Find Help" });
+end
+
 -- TODO: change mappings of lsp foo's
 function M.lsp(_, bufnr)
 	opts = vim.tbl_deep_extend("force", opts, { buffer = bufnr });
@@ -131,6 +139,14 @@ function M.lsp(_, bufnr)
 	-- vim.keymap.set("n", "rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename symbol" }))
 	-- TODO: learn what are code actions
 	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
+end
+
+function M.undotree()
+	vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" });
+end
+
+function M.session()
+	vim.keymap.set("n", "<leader>tr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" });
 end
 
 function M.labels()
