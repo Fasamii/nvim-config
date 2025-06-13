@@ -110,6 +110,10 @@ end
 
 ---- PLUGINS ----
 
+function M.trailspace(toggle)
+	vim.keymap.set("n", "<leader>tw", toggle, { desc = "toggle auto whitespace trimming", silent = true });
+end
+
 function M.telescope()
 	vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find Files" });
 	vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Find Files" });

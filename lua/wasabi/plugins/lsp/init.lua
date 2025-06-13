@@ -59,6 +59,7 @@ return { {
 		{ "folke/lazydev.nvim" },
 	},
 	config = function()
+			-- TODO: make single global notify foo and require it here
 		local notify = function(msg, ll)
 			local ok, fidget = pcall(require, "fidget");
 			if ok then

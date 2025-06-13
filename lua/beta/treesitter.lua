@@ -2,17 +2,17 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	version = false,
 	build = ":TSUpdate",
-	event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
+	event = { "BufReadPost", "BufReadPre", "BufNewFile", "BufWritePre", "VeryLazy" },
 	lazy = vim.fn.argc(-1) == 0,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
-	config = function ()
+	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"c",
 				"bash",
-				"rust" ,
+				"rust",
 				"yaml",
 				"toml",
 				"lua",
@@ -29,7 +29,6 @@ return {
 
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = false,
 			},
 
 			indent = { enable = true },
@@ -57,6 +56,7 @@ return {
 					include_surrounding_whitespace = true,
 				},
 			},
+			additional_vim_regex_highlighting = false,
 		});
 	end
 }

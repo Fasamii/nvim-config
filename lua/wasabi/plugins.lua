@@ -42,5 +42,6 @@ require("lazy").setup({
 		{ import = "wasabi.plugins.mistakes-detector", enabled = true },
 		{ import = "beta.session", enabled = true },
 		{ import = "beta.undo-tree", enabled = true },
+		{ import = "beta.trailspace", enabled = true },
 	},
 });
