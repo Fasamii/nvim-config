@@ -27,8 +27,11 @@ local cp = {
 	orange	= "#f26c0c",
 
 	util_lv1	= "#f487b6",
-	util_lv2	= "#9046cf",
-	util_lv3	= "#cc59d2",
+	util_lv1_dimm = "#c56c94",
+	util_lv2	= "#cc59d2",
+	util_lv2_dimm = "#a44aa8",
+	util_lv3	= "#9046cf",
+	util_lv3_dimm = "#6f3a9f",
 
 
 	error		= "#ff4081",
@@ -177,6 +180,54 @@ hi("@punctuation.delimiter", { fg = cp.violet }); -- Delimiters (commas, colons,
 hi("@punctuation.special", { fg = cp.violet }); -- Special punctuation
 -- Operator 
 hi("@operator", { fg = cp.magneta, bold = true }); --TODO: consider other color for operator
+----------------
+--- Markdown ---
+----------------
+-- Heading
+hi("RenderMarkdownH1", { fg = cp.white, bold = true });
+hi("RenderMarkdownH1Bg", { bg = cp.util_lv1_dimm, fg = cp.bg_solid, bold = true });
+hi("RenderMarkdownH2", { fg = cp.white, bold = true });
+hi("RenderMarkdownH2Bg", { bg = cp.util_lv2_dimm, fg = cp.bg_solid, bold = true });
+hi("RenderMarkdownH3", { fg = cp.white, bold = true });
+hi("RenderMarkdownH3Bg", { bg = cp.util_lv3_dimm, fg = cp.bg_solid, bold = true });
+hi("RenderMarkdownH4", { fg = cp.white, bold = true });
+hi("RenderMarkdownH4Bg", { bg = cp.util_lv3_dimm, fg = cp.bg_solid, bold = true });
+hi("RenderMarkdownH5", { fg = cp.white, bold = true });
+hi("RenderMarkdownH5Bg", { bg = cp.util_lv3_dimm, fg = cp.bg_solid, bold = true });
+hi("RenderMarkdownH6", { fg = cp.white, bold = true });
+hi("RenderMarkdownH6Bg", { bg = cp.util_lv3_dimm, fg = cp.bg_solid, bold = true });
+-- Code
+hi("RenderMarkdownCode", { bg = cp.black_dark });
+-- List
+hi("RenderMarkdownBullet", { fg = cp.purple });
+hi("RenderMarkdownChecked", { fg = cp.green });
+hi("RenderMarkdownTodo", { fg = cp.yellow });
+hi("RenderMarkdownUnchecked", { fg = cp.red });
+hi("RenderMarkdownConsider", { fg = cp.violet });
+-- Quote
+hi("RenderMarkdownQuote", { fg = cp.util_lv1_dimm});
+hi("RenderMarkdownQuote1", { fg = cp.util_lv1_dimm});
+hi("RenderMarkdownQuote2", { fg = cp.util_lv2_dimm});
+hi("RenderMarkdownQuote3", { fg = cp.util_lv3_dimm});
+hi("RenderMarkdownQuote4", { fg = cp.util_lv3_dimm});
+hi("RenderMarkdownQuote5", { fg = cp.util_lv3_dimm});
+hi("RenderMarkdownQuote6", { fg = cp.util_lv3_dimm});
+-- Table
+hi("RenderMarkdownTableHead", { fg = cp.yellow });
+hi("RenderMarkdownTableRow", { fg = cp.purple });
+hi("RenderMarkdownTableFill", {});
+-- Link
+hi("RenderMarkdownLink", { fg = cp.blue });
+hi("RenderMarkdownWikiLink", { fg = cp.blue });
+hi("@markup.link.markdown", { fg = cp.blue });
+hi("@markup.link.label.markdown_inline", { fg = cp.blue });
+hi("@markup.link.url.markdown_inline", { fg = cp.violet });
+hi("@markup.wikilink.label.markdown_inline", { fg = cp.blue });
+hi("@markup.wikilink.url.markdown_inline", { fg = cp.violet });
+-- Math
+hi("@markup.math", { fg = cp.cyan });
+-- Callouts
+hi("RenderMarkdownSuccess", { fg = cp.green });
 --------------
 -- spelling --
 --------------
@@ -201,8 +252,8 @@ hi("Info", { fg = cp.info });
 -- git --
 ---------
 hi("GitAdd", { fg = cp.util_lv1, bold = true });
-hi("GitMod", { fg = cp.util_lv2, bold = true });
-hi("GitRem", { fg = cp.util_lv3, bold = true });
+hi("GitRem", { fg = cp.util_lv2, bold = true });
+hi("GitMod", { fg = cp.util_lv3, bold = true });
 -----------------
 -- status line --
 -----------------
