@@ -49,9 +49,9 @@ local cp = {
 	search        = "#613214",
 	match_paren   = "#007acc",
 
-	git_add       = "#1a7a47",
-	git_del       = "#a33636",
-	git_mod       = "#a37800",
+	git_add       = "#1f6243",
+	git_del       = "#943d3d",
+	git_mod       = "#8a6a1e",
 };
 
 local function hi(group, style) vim.api.nvim_set_hl(0, group, style); end;
