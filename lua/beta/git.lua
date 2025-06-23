@@ -11,6 +11,7 @@ return {
 				changedelete = { text = "", numhl = "GitSignsChangeNr" },
 				untracked    = { text = "", numhl = "GitSignsAddNr" },
 			},
+			signs_staged_enable          = false, -- TODO: make it work (for some reason plugin ignores completely hi groups for staged signs)
 			signs_staged                 = {
 				add          = { text = "", numhl = "GitSignsAddNrStaged" },
 				change       = { text = "", numhl = "GitSignsChangeNrStaged" },
@@ -19,20 +20,17 @@ return {
 				changedelete = { text = "", numhl = "GitSignsChangeNrStaged" },
 				untracked    = { text = "", numhl = "GitSignsAddNrStaged" },
 			},
-			signs_staged_enable          = true,
-			signcolumn                   = true,
 			numhl                        = true, -- Needed for LineNr bg highlight
 			linehl                       = false,
+			signcolumn                   = true,
 			word_diff                    = false,
-			watch_gitdir                 = {
-				follow_files = true
-			},
+			watch_gitdir                 = { follow_files = true },
 			auto_attach                  = true,
 			attach_to_untracked          = false,
 			current_line_blame           = true,
 			current_line_blame_opts      = {
 				virt_text = true,
-				virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+				virt_text_pos = "eol", -- "eol" | "overlay" | "right_align"
 				delay = 400,
 				ignore_whitespace = false,
 				virt_text_priority = 100,
@@ -45,8 +43,8 @@ return {
 			max_file_length              = 40000, -- Disable if file is longer than this (in lines)
 			preview_config               = {
 				-- Options passed to nvim_open_win
-				style = 'minimal',
-				relative = 'cursor',
+				style = "minimal",
+				relative = "cursor",
 				row = 0,
 				col = 1
 			},

@@ -264,12 +264,14 @@ hi("Info", { fg = cp.info });
 hi("GitAdd", { fg = cp.git_add, bold = true });
 hi("GitDel", { fg = cp.git_del, bold = true });
 hi("GitMod", { fg = cp.git_mod, bold = true });
+-- Signs
 hi("GitSignsAddNr", { bg = cp.git_add, fg = cp.bg_solid, bold = true });
 hi("GitSignsDeleteNr", { bg = cp.git_del, fg = cp.bg_solid, bold = true });
 hi("GitSignsChangeNr", { bg = cp.git_mod, fg = cp.bg_solid, bold = true });
+-- Staged Signs
 hi("GitSignsAddNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
-hi("GitSignsDeleteNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
 hi("GitSignsChangeNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
+hi("GitSignsDeleteNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
 -----------------
 -- status line --
 -----------------
