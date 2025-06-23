@@ -1,6 +1,7 @@
 -- TODO: consider this markdown plugin https://github.com/preservim/vim-markdown instead of render-markdown.nvim
 return {
 	"MeanderingProgrammer/render-markdown.nvim",
+	ft = { "markdown" },
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter" },
 		{ "nvim-tree/nvim-web-devicons" },

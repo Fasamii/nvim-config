@@ -86,6 +86,11 @@ function M.spelling(toggle, repleace)
 		{ noremap = true, silent = true, nowait = true, desc = "Show spelling suggestions" });
 end
 
+function M.splitjoin(sj)
+	vim.keymap.set({"n", "x"}, "ss", function() sj.split() end, { desc = "split arguments" });
+	vim.keymap.set( { "n", "x" }, "sj", function() sj.join() end, {desc = "join arguments"});
+end
+
 function M.term(toggle)
 	vim.keymap.set("n", "<leader>ts", function()
 		toggle("right");
@@ -176,9 +181,11 @@ function M.labels()
 		function() require("todo-comments").jump_prev({ keywords = { "FIX", "FIXME", "BUG", "FIXIT", "ISSUE", "ERR" } }) end,
 		{ desc = "Prev FIXME label" })
 
-	vim.keymap.set("n", "<leader>ltn", function() require("todo-comments").jump_next({ keywords = { "TODO", "LATER" } }) end,
+	vim.keymap.set("n", "<leader>ltn",
+		function() require("todo-comments").jump_next({ keywords = { "TODO", "LATER" } }) end,
 		{ desc = "Next TODO label" })
-	vim.keymap.set("n", "<leader>ltp", function() require("todo-comments").jump_prev({ keywords = { "TODO", "LATER" } }) end,
+	vim.keymap.set("n", "<leader>ltp",
+		function() require("todo-comments").jump_prev({ keywords = { "TODO", "LATER" } }) end,
 		{ desc = "Prev TODO label" })
 
 	vim.keymap.set("n", "<leader>lwn",

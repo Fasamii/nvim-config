@@ -44,5 +44,6 @@ require("lazy").setup({
 		{ import = "beta.undo-tree", enabled = true },
 		{ import = "beta.trailspace", enabled = true },
 		{ import = "beta.markdown", enabled = true },
+		{ import = "beta.split-join", enabled = true },
 	},
 });

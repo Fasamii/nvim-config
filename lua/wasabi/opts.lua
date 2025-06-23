@@ -13,7 +13,7 @@ vim.opt.softtabstop = 6;
 vim.opt.shiftwidth = 6;
 vim.opt.autoindent = true;  -- Check if you like it
 vim.opt.smartindent = true; -- Check if you like it
--- vim.opt.colorcolumn = "100"; -- in case you need that stupid ruler
+vim.opt.colorcolumn = "100"; -- in case you need that stupid ruler
 
 vim.opt.wrap = true;
 vim.opt.scrolloff = 999;
