@@ -1,7 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufReadPre", -- load when a buffer is read
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			signs                        = {
 				add          = { text = "" },
@@ -11,7 +11,7 @@ return {
 				changedelete = { text = "" },
 				untracked    = { text = "" },
 			},
-			signs_staged_enable          = true, -- TODO: make it work (for some reason plugin ignores completely hi groups for staged signs)
+			signs_staged_enable          = true, -- FIX: make it work (for some reason plugin ignores completely hi groups for staged signs)
 			signs_staged                 = {
 				add          = { text = "" },
 				change       = { text = "" },
