@@ -4,21 +4,21 @@ return {
 		event = "BufReadPre", -- load when a buffer is read
 		opts = {
 			signs                        = {
-				add          = { text = "", numhl = "GitSignsAddNr" },
-				change       = { text = "", numhl = "GitSignsChangeNr" },
-				delete       = { text = "", numhl = "GitSignsDeleteNr" },
-				topdelete    = { text = "", numhl = "GitSignsDeleteNr" },
-				changedelete = { text = "", numhl = "GitSignsChangeNr" },
-				untracked    = { text = "", numhl = "GitSignsAddNr" },
+				add          = { text = "" },
+				change       = { text = "" },
+				delete       = { text = "" },
+				topdelete    = { text = "" },
+				changedelete = { text = "" },
+				untracked    = { text = "" },
 			},
-			signs_staged_enable          = false, -- TODO: make it work (for some reason plugin ignores completely hi groups for staged signs)
+			signs_staged_enable          = true, -- TODO: make it work (for some reason plugin ignores completely hi groups for staged signs)
 			signs_staged                 = {
-				add          = { text = "", numhl = "GitSignsAddNrStaged" },
-				change       = { text = "", numhl = "GitSignsChangeNrStaged" },
-				delete       = { text = "", numhl = "GitSignsDeleteNrStaged" },
-				topdelete    = { text = "", numhl = "GitSignsDeleteNrStaged" },
-				changedelete = { text = "", numhl = "GitSignsChangeNrStaged" },
-				untracked    = { text = "", numhl = "GitSignsAddNrStaged" },
+				add          = { text = "" },
+				change       = { text = "" },
+				delete       = { text = "" },
+				topdelete    = { text = "" },
+				changedelete = { text = "" },
+				untracked    = { text = "" },
 			},
 			numhl                        = true, -- Needed for LineNr bg highlight
 			linehl                       = false,
@@ -38,7 +38,7 @@ return {
 			},
 			current_line_blame_formatter = "  󰊢 <author>, <author_time:%R> - <summary>",
 			sign_priority                = 6,
-			update_debounce              = 100,
+			update_debounce              = 400,
 			status_formatter             = nil, -- Use default
 			max_file_length              = 40000, -- Disable if file is longer than this (in lines)
 			preview_config               = {
