@@ -28,7 +28,7 @@
 				color = "#f14e32",
 				cterm_color = "196",
 				name = "Gitignore"
-			}
+			},
 		},
 
 		override_by_extension = {
