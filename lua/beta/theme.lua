@@ -58,6 +58,7 @@ local function hi(group, style) vim.api.nvim_set_hl(0, group, style); end;
 
 -- Basic editor highlights
 hi("Normal", { fg = cp.white, bg = cp.bg });
+hi("ColorColumn", { bg = cp.black_shadow });
 hi("CursorLine", { bg = cp.black });
 hi("CursorLineNr", { fg = cp.purple, bg = cp.bg, bold = true });
 hi("LineNr", { fg = cp.white_dark, bg = cp.bg });
