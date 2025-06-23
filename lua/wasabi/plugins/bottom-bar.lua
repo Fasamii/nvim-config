@@ -96,7 +96,7 @@ return {
 					diff_color = {
 						added = "GitAdd",
 						modified = "GitMod",
-						removed = "GitRem",
+						removed = "GitDel",
 					},
 					symbols = {
 						added = "+",

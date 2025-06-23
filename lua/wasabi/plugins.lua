@@ -45,5 +45,6 @@ require("lazy").setup({
 		{ import = "beta.trailspace", enabled = true },
 		{ import = "beta.markdown", enabled = true },
 		{ import = "beta.split-join", enabled = true },
+		{ import = "beta.git", enabled = true },
 	},
 });

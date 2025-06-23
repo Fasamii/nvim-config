@@ -48,6 +48,10 @@ local cp = {
 	selection     = "#264f78",
 	search        = "#613214",
 	match_paren   = "#007acc",
+
+	git_add       = "#1a7a47",
+	git_del       = "#a33636",
+	git_mod       = "#a37800",
 };
 
 local function hi(group, style) vim.api.nvim_set_hl(0, group, style); end;
@@ -257,9 +261,12 @@ hi("Info", { fg = cp.info });
 ---------
 -- git --
 ---------
-hi("GitAdd", { fg = cp.util_lv1, bold = true });
-hi("GitRem", { fg = cp.util_lv2, bold = true });
-hi("GitMod", { fg = cp.util_lv3, bold = true });
+hi("GitAdd", { fg = cp.git_add, bold = true });
+hi("GitDel", { fg = cp.git_del, bold = true });
+hi("GitMod", { fg = cp.git_mod, bold = true });
+hi("GitSignsAddNr", { bg = cp.git_add, fg = cp.bg_solid, bold = true });
+hi("GitSignsDeleteNr", { bg = cp.git_del, fg = cp.bg_solid, bold = true });
+hi("GitSignsChangeNr", { bg = cp.git_mod, fg = cp.bg_solid, bold = true });
 -----------------
 -- status line --
 -----------------
