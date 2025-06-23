@@ -15,12 +15,19 @@ return {
 		-- TODO: make json or some other format file to store toggle settings like auto_trail_space
 		local cmd_id = nil;
 		local cmd_enabled = false;
+		local function _has_lsp_attached()
+			-- Neovim ≥0.8: use vim.lsp.get_active_clients()
+			local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+			return next(clients) ~= nil
+		end
 
 		local function create_cmd()
 			cmd_id = vim.api.nvim_create_autocmd("CursorMoved", {
 				pattern = "*",
 				callback = function()
-					require("mini.trailspace").trim();
+					if _has_lsp_attached() then
+						require("mini.trailspace").trim();
+					end
 				end
 			});
 		end
@@ -38,7 +45,7 @@ return {
 				cmd_enabled = true;
 				notify("Auto-trim Enabled", vim.log.levels.INFO);
 			end
-	 	end
+		end
 
 		if cmd_enabled then create_cmd() end;
 		require("wasabi.keymaps").trailspace(toggle_cmd);

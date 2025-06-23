@@ -19,6 +19,7 @@ return {
 				"json",
 				"html",
 				"regex",
+				"latex",
 				"markdown",
 				"markdown_inline",
 			},

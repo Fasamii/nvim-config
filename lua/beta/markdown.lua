@@ -1,7 +1,126 @@
+-- TODO: consider this markdown plugin https://github.com/preservim/vim-markdown instead of render-markdown.nvim
 return {
 	"MeanderingProgrammer/render-markdown.nvim",
-	dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+	dependencies = {
+		{ "nvim-treesitter/nvim-treesitter" },
+		{ "nvim-tree/nvim-web-devicons" },
+	},
 	opts = {
+		enabled = true,
+		-- Vim modes that will show a rendered view of the markdown file, :h mode(), for all enabled
+		-- components. Individual components can be enabled for other modes. Remaining modes will be
+		-- unaffected by this plugin.
+		render_modes = { 'n', 'c', 't' },
+		-- Maximum file size (in MB) that this plugin will attempt to render.
+		-- Any file larger than this will effectively be ignored.
+		max_file_size = 10.0,
+		-- Milliseconds that must pass before updating marks, updates occur.
+		-- within the context of the visible window, not the entire buffer.
+		debounce = 100, -- TODO: consider making smaller
+		-- | obsidian | mimic Obsidian UI                                          |
+		-- | lazy     | will attempt to stay up to date with LazyVim configuration |
+		-- | none     | does nothing                                               |
+		preset = 'obsidian',
+		-- The level of logs to write to file: vim.fn.stdpath('state') .. '/render-markdown.log'.
+		-- Only intended to be used for plugin development / debugging.
+		log_level = 'error',
+		-- Print runtime of main update method.
+		-- Only intended to be used for plugin development / debugging.
+		log_runtime = false,
+		-- Filetypes this plugin will run on.
+		file_types = { 'markdown', "vimwiki" },
+		-- Takes buffer as input, if it returns true this plugin will not attach to the buffer
+		-- ignore = function()
+		-- 	return false
+		-- end,
+		-- Additional events that will trigger this plugin's render loop.
+		change_events = {},
+		-- TODO: check what is that
+		-- injections = {
+		-- 	-- Out of the box language injections for known filetypes that allow markdown to be interpreted
+		-- 	-- in specified locations, see :h treesitter-language-injections.
+		-- 	-- Set enabled to false in order to disable.
+		--
+		-- 	gitcommit = {
+		-- 		enabled = true,
+		-- 		query = [[
+		--               ((message) @injection.content
+		--                   (#set! injection.combined)
+		--                   (#set! injection.include-children)
+		--                   (#set! injection.language "markdown"))
+		--           ]],
+		-- 	},
+		-- },
+		patterns = {
+			-- -- Highlight patterns to disable for filetypes, i.e. lines concealed around code blocks
+			--
+			-- markdown = {
+			-- 	disable = true,
+			-- 	directives = {
+			-- 		{ id = 17, name = 'conceal_lines' },
+			-- 		{ id = 18, name = 'conceal_lines' },
+			-- 	},
+			-- },
+		},
+		anti_conceal = {
+			-- TODO: check what is that
+			-- -- This enables hiding any added text on the line the cursor is on.
+			-- enabled = true,
+			-- -- Modes to disable anti conceal feature.
+			-- disabled_modes = false,
+			-- -- Number of lines above cursor to show.
+			-- above = 0,
+			-- -- Number of lines below cursor to show.
+			-- below = 0,
+			-- -- Which elements to always show, ignoring anti conceal behavior. Values can either be
+			-- -- booleans to fix the behavior or string lists representing modes where anti conceal
+			-- -- behavior will be ignored. Valid values are:
+			-- --   head_icon, head_background, head_border, code_language, code_background, code_border,
+			-- --   dash, bullet, check_icon, check_scope, quote, table_border, callout, link, sign
+			-- ignore = {
+			-- 	code_background = true,
+			-- 	sign = true,
+			-- },
+		},
+		padding = {
+			-- Highlight to use when adding whitespace, should match background.
+			highlight = 'Normal',
+		},
+		latex = {
+			-- Turn on / off latex rendering.
+			enabled = true,
+			-- Additional modes to render latex.
+			render_modes = true,
+			-- Executable used to convert latex formula to rendered unicode.
+			converter = "ssmtuc",
+			-- Highlight for latex blocks.
+			highlight = 'RenderMarkdownMath',
+			-- Determines where latex formula is rendered relative to block.
+			-- | above | above latex block |
+			-- | below | below latex block |
+			position = 'below',
+			-- Number of empty lines above latex blocks.
+			top_pad = 0,
+			-- Number of empty lines below latex blocks.
+			bottom_pad = 0,
+		},
+		on = {
+			-- -- Called when plugin initially attaches to a buffer.
+			-- attach = function() end,
+			-- -- Called before adding marks to the buffer for the first time.
+			-- initial = function() end,
+			-- -- Called after plugin renders a buffer.
+			-- render = function() end,
+			-- -- Called after plugin clears a buffer.
+			-- clear = function() end,
+		},
+		completions = {
+			-- Settings for blink.cmp completions source
+			blink = { enabled = true },
+			-- Settings for in-process language server completions
+			lsp = { enabled = true },
+		},
+
 		heading = {
 			enabled = true,
 			render_modes = true, -- render while in insert mode
@@ -130,7 +249,7 @@ return {
 			-- | string     | `value`                                             |
 			-- | string[]   | `cycle(value, context.level)`                       |
 			-- | string[][] | `clamp(cycle(value, context.level), context.index)` |
-			icons = { "▶ ", "▷", "▶▶", "▷▷" },
+			icons = { "▶ ", "▷", "▶▶ ", "▷▷ " },
 			-- Replaces 'n.'|'n)' of 'list_item'.
 			-- Output is evaluated using the same logic as 'icons'.
 			ordered_icons = function(ctx) -- TODO: check what this code does
@@ -299,7 +418,7 @@ return {
 		},
 		link = {
 			enabled = true,
-			render_modes = false,
+			render_modes = true,
 			-- How to handle footnote links, start with a '^'.
 			footnote = {
 				-- Turn on / off footnote rendering.
@@ -370,7 +489,7 @@ return {
 			-- Turn on / off org-indent-mode.
 			enabled = false,
 			-- Additional modes to render indents.
-			render_modes = false,
+			render_modes = true,
 			-- Amount of additional padding added for each heading level.
 			per_level = 2,
 			-- Heading levels <= this value will not be indented.
@@ -385,8 +504,20 @@ return {
 		},
 	},
 	config = function(_, opts)
-		require("render-markdown").setup(vim.tbl_deep_extend("force", opts, {
-			completions = { blink = { enabled = true } },
-		}));
+		require("render-markdown").setup(opts);
+
+		-- vim.treesitter.language.register('markdown', 'vimwiki') -- TODO: check if not making errors
+
+		local md_wrap = vim.api.nvim_create_augroup("MarkdownAutoWrap", { clear = true })
+		vim.api.nvim_create_autocmd("FileType", {
+			group = md_wrap,
+			pattern = "markdown",
+			callback = function()
+				vim.opt_local.textwidth = 100 -- hard wrap at col 100
+				vim.opt_local.wrap      = true -- visual wrap
+				vim.opt_local.linebreak = true -- break at word boundaries
+				vim.opt_local.formatoptions:append "t" -- auto-wrap as you type
+			end,
+		});
 	end
 }

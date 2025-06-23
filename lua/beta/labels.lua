@@ -17,6 +17,7 @@ return {
 				signs = true,
 				icon = " ",
 				color = "warn",
+				alt = { "LATER" },
 			},
 			WARN = {
 				signs = true,

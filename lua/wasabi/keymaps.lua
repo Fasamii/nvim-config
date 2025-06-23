@@ -157,7 +157,7 @@ function M.labels()
 	vim.keymap.set("n", "<leader>ll", "<cmd>TodoTelescope<cr>", { desc = "list all labels" });
 	vim.keymap.set("n", "<leader>lfl", "<cmd>TodoTelescope keywords=FIX,FIXME,BUG,FIXIT,ISSUE,ERR<cr>",
 		{ desc = "list all FIXME labels" });
-	vim.keymap.set("n", "<leader>ltl", "<cmd>TodoTelescope keywords=TODO<cr>", { desc = "list all TODO labels" });
+	vim.keymap.set("n", "<leader>ltl", "<cmd>TodoTelescope keywords=TODO,LATER<cr>", { desc = "list all TODO labels" });
 	vim.keymap.set("n", "<leader>lwl", "<cmd>TodoTelescope keywords=WARN,WARNING,XXX<cr>",
 		{ desc = "list all WARN labels" });
 	vim.keymap.set("n", "<leader>lil", "<cmd>TodoTelescope keywords=NOTE,INFO<cr>", { desc = "list all NOTE labels" });
@@ -176,9 +176,9 @@ function M.labels()
 		function() require("todo-comments").jump_prev({ keywords = { "FIX", "FIXME", "BUG", "FIXIT", "ISSUE", "ERR" } }) end,
 		{ desc = "Prev FIXME label" })
 
-	vim.keymap.set("n", "<leader>ltn", function() require("todo-comments").jump_next({ keywords = { "TODO" } }) end,
+	vim.keymap.set("n", "<leader>ltn", function() require("todo-comments").jump_next({ keywords = { "TODO", "LATER" } }) end,
 		{ desc = "Next TODO label" })
-	vim.keymap.set("n", "<leader>ltp", function() require("todo-comments").jump_prev({ keywords = { "TODO" } }) end,
+	vim.keymap.set("n", "<leader>ltp", function() require("todo-comments").jump_prev({ keywords = { "TODO", "LATER" } }) end,
 		{ desc = "Prev TODO label" })
 
 	vim.keymap.set("n", "<leader>lwn",

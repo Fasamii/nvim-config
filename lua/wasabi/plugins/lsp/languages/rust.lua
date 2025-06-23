@@ -11,6 +11,18 @@ return {
 				},
 				checkOnSave = {
 					enable = true,
+					command = "clippy",
+					extraArgs = {
+						"--",
+						"-Wclippy::pedantic", -- strict (good for clean code)
+						"-Wclippy::nursery", -- experimental lints
+						"-Wclippy::cargo", -- warn about Cargo.toml issues
+						"-Wclippy::indexing_slicing", -- warn on .index() or [] that could panic
+						"-Wclippy::unwrap_used", -- warn when .unwrap() is used
+						"-Wclippy::expect_used", -- warn when .expect() is used
+						"-Wclippy::panic", -- warn when panic!() is used
+						"-Wclippy::todo", -- warn on todo!() macros
+					},
 				},
 				procMacro   = { enable = true },
 				diagnostics = {
