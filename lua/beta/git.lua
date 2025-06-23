@@ -12,33 +12,33 @@ return {
 				untracked    = { text = "", numhl = "GitSignsAddNr" },
 			},
 			signs_staged                 = {
-				add          = { text = "", numhl = "GitSignsAddNr" },
-				change       = { text = "", numhl = "GitSignsChangeNr" },
-				delete       = { text = "", numhl = "GitSignsDeleteNr" },
-				topdelete    = { text = "", numhl = "GitSignsDeleteNr" },
-				changedelete = { text = "", numhl = "GitSignsChangeNr" },
-				untracked    = { text = "", numhl = "GitSignsAddNr" },
+				add          = { text = "", numhl = "GitSignsAddNrStaged" },
+				change       = { text = "", numhl = "GitSignsChangeNrStaged" },
+				delete       = { text = "", numhl = "GitSignsDeleteNrStaged" },
+				topdelete    = { text = "", numhl = "GitSignsDeleteNrStaged" },
+				changedelete = { text = "", numhl = "GitSignsChangeNrStaged" },
+				untracked    = { text = "", numhl = "GitSignsAddNrStaged" },
 			},
 			signs_staged_enable          = true,
-			signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
-			numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
-			linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
-			word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
+			signcolumn                   = true,
+			numhl                        = true, -- Needed for LineNr bg highlight
+			linehl                       = false,
+			word_diff                    = false,
 			watch_gitdir                 = {
 				follow_files = true
 			},
 			auto_attach                  = true,
 			attach_to_untracked          = false,
-			current_line_blame           = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+			current_line_blame           = true,
 			current_line_blame_opts      = {
 				virt_text = true,
 				virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-				delay = 1000,
+				delay = 400,
 				ignore_whitespace = false,
 				virt_text_priority = 100,
 				use_focus = true,
 			},
-			current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
+			current_line_blame_formatter = "  󰊢 <author>, <author_time:%R> - <summary>",
 			sign_priority                = 6,
 			update_debounce              = 100,
 			status_formatter             = nil, -- Use default

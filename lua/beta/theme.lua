@@ -267,6 +267,9 @@ hi("GitMod", { fg = cp.git_mod, bold = true });
 hi("GitSignsAddNr", { bg = cp.git_add, fg = cp.bg_solid, bold = true });
 hi("GitSignsDeleteNr", { bg = cp.git_del, fg = cp.bg_solid, bold = true });
 hi("GitSignsChangeNr", { bg = cp.git_mod, fg = cp.bg_solid, bold = true });
+hi("GitSignsAddNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
+hi("GitSignsDeleteNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
+hi("GitSignsChangeNrStaged", { bg = cp.white, fg = cp.bg_solid, bold = true });
 -----------------
 -- status line --
 -----------------
