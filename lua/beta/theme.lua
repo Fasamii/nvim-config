@@ -280,7 +280,7 @@ hi("GitSignsStagedDelete", { bg = cp.black_shadow, fg = cp.white_dark });
 -----------------
 -- nvim builtin
 hi("StatusLine", { bg = cp.black_dark, fg = cp.white });
-hi("StatusLineNc", { bg = cp.black_dark, fg = cp.white });
+hi("StatusLineNc", { bg = cp.black, fg = cp.white });
 hi("TabLineFill", { bg = cp.black_dark });
 hi("TabLineSel", { bg = cp.black_dimm, fg = cp.magneta, bold = true });
 hi("TabLine", { bg = cp.black_dark, fg = cp.violet });

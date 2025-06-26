@@ -48,6 +48,8 @@ vim.g.netrw_fastbrowse = 0; -- 1: enable caching for faster browsing
 vim.opt.isfname:append("@-@");
 vim.opt.hlsearch = true;
 
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
+
 vim.opt.updatetime = 50;
 vim.diagnostic.config({
 	virtual_text = true,
@@ -66,4 +68,37 @@ vim.diagnostic.config({
 	},
 });
 
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
+vim.fn.sign_define("DapBreakpoint", {
+	text = " ",
+	texthl = "DapBreakpoint",
+	linehl = "",
+	numhl = "",
+});
+
+vim.fn.sign_define("DapBreakpointCondition", {
+	text = " ",
+	texthl = "DapBreakpointCondition",
+	linehl = "",
+	numhl = "",
+});
+
+vim.fn.sign_define("DapLogPoint", {
+	text = "󰍃 ",
+	texthl = "DapLogPoint",
+	linehl = "",
+	numhl = "",
+});
+
+vim.fn.sign_define("DapStopped", {
+	text = "╳",
+	texthl = "DapStopped",
+	linehl = "",
+	numhl = "",
+});
+
+vim.fn.sign_define("DapBreakpointRejected", {
+	text = "╳",
+	texthl = "DapBreakpointRejected",
+	linehl = "",
+	numhl = "",
+});

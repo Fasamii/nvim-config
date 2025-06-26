@@ -35,7 +35,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", { desc = "moves lines down in visua
 vim.keymap.set("n", "<leader>p", "\"+p", { desc = "paste from system clipboard" });
 vim.keymap.set("v", "<leader>y", "\"+y", { desc = "copy to system clipboard" });
 
-vim.keymap.set("n", "<leader>dl", "0D", { desc = "delete line without new line char" });
+vim.keymap.set("n", "dr", "0D", { desc = "delete line without new line char" });
 
 vim.keymap.set("n", "<leader>br", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace word cursor is on globally" });
@@ -87,8 +87,8 @@ function M.spelling(toggle, repleace)
 end
 
 function M.splitjoin(sj)
-	vim.keymap.set({"n", "x"}, "ss", function() sj.split() end, { desc = "split arguments" });
-	vim.keymap.set( { "n", "x" }, "sj", function() sj.join() end, {desc = "join arguments"});
+	vim.keymap.set({ "n", "x" }, "ss", function() sj.split() end, { desc = "split arguments" });
+	vim.keymap.set({ "n", "x" }, "sj", function() sj.join() end, { desc = "join arguments" });
 end
 
 function M.term(toggle)
@@ -148,6 +148,24 @@ function M.lsp(_, bufnr)
 	-- vim.keymap.set("n", "rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename symbol" }))
 	-- TODO: learn what are code actions
 	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
+end
+
+function M.dap(dap, dapui)
+	vim.keymap.set("n", "<leader>db", function()
+		dap.toggle_breakpoint()
+	end, { desc = "Toggle break point" });
+
+	vim.keymap.set("n", "<leader>dc", function()
+		dap.continue()
+	end, { desc = "Continue" });
+
+	vim.keymap.set("n", "<leader>dC", function ()
+		dap.run_to_cursor()
+	end, { desc = "Run to Cursor" });
+
+	vim.keymap.set("n", "<leader>dT", function ()
+		dap.termainate()
+	end, { desc = "Termainate" });
 end
 
 function M.undotree()
