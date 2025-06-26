@@ -1,3 +1,33 @@
+local function get_config_fields(profile)
+	local dirs = vim.fn.glob(vim.fn.stdpath("config") .. "/lua/" .. profile .. "/langs/*");
+	local paths = vim.split(
+		dirs,
+		'\n',
+		{ trimempty = true }
+	);
+
+	local configs = {};
+
+	for _, path in ipairs(paths) do
+		local name = vim.fn.fnamemodify(path, ":t");
+		path = path .. "/lsp.lua";
+
+		if vim.fn.filereadable(path) ~= 1 then
+			print("[lsp/init.lua] lsp config for <" .. path .. "> doesn't exist"); -- TODO: use unified notify foo
+		else
+			local ok, config = pcall(dofile, path);
+			if not ok then
+				print("[lsp/init.lua] failed to get config for <" .. path .. ">"); -- TODO: use unified notify foo
+			else
+				print("adding config");
+				configs[name] = config;
+			end
+		end
+	end
+
+	return configs;
+end
+
 return {
 	{
 		"b0o/schemastore.nvim",
@@ -64,6 +94,7 @@ return {
 			{ "folke/lazydev.nvim" },
 		},
 		config = function()
+
 			-- TODO: make single global notify foo and require it here
 			local notify = function(msg, ll)
 				local ok, fidget = pcall(require, "fidget");

@@ -116,10 +116,8 @@ return {
 				)
 			else
 				for _, type in ipairs(lang_config.extensions) do
-					print(lang_name .. " for " .. type);
 					if type == vim.bo.filetype then -- FIXME: 
 							-- fails if new file opened or if nvim starts with startup screen
-						print("\t<is>");
 						local ok, err = pcall(lang_config.setup, dap);
 						if not ok then
 							vim.notify( -- TODO: change to one simple notify foo for everything
