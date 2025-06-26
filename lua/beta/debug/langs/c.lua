@@ -23,7 +23,8 @@
 --	},
 --
 --	configurations = {
---		c = {
+--		c = { -- TODO: consider automatically inserting <lang name> between configuration's and actual
+--			-- configurations. Based on file name.
 --			...,
 --		},
 --	},
