@@ -1,31 +1,7 @@
-local function get_config_fields(profile)
-	local dirs = vim.fn.glob(vim.fn.stdpath("config") .. "/lua/" .. profile .. "/langs/*");
-	local paths = vim.split(
-		dirs,
-		'\n',
-		{ trimempty = true }
-	);
-
-	local configs = {};
-
-	for _, path in ipairs(paths) do
-		local name = vim.fn.fnamemodify(path, ":t");
-		path = path .. "/lsp.lua";
-
-		if vim.fn.filereadable(path) ~= 1 then
-			print("[lsp/init.lua] lsp config for <" .. path .. "> doesn't exist"); -- TODO: use unified notify foo
-		else
-			local ok, config = pcall(dofile, path);
-			if not ok then
-				print("[lsp/init.lua] failed to get config for <" .. path .. ">"); -- TODO: use unified notify foo
-			else
-				print("adding config");
-				configs[name] = config;
-			end
-		end
+local function enable_configs(configs)
+	for name, config in pairs(configs) do
+		print(name);
 	end
-
-	return configs;
 end
 
 return {
@@ -94,16 +70,7 @@ return {
 			{ "folke/lazydev.nvim" },
 		},
 		config = function()
-
-			-- TODO: make single global notify foo and require it here
-			local notify = function(msg, ll)
-				local ok, fidget = pcall(require, "fidget");
-				if ok then
-					fidget.notify(msg, ll);
-				else
-					vim.notify(msg, ll);
-				end
-			end
+			local notify = require("wasabi.utils").notify;
 
 			local on_attach = function(client, bufnr)
 				require("wasabi.keymaps").lsp(client, bufnr);
@@ -115,47 +82,35 @@ return {
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities();
 			local ok, blink = pcall(require, "blink.cmp");
-			if ok then capabilities = vim.tbl_deep_extend("force", capabilities, blink.get_lsp_capabilities()); end
+			if ok then
+				capabilities = vim.tbl_deep_extend(
+					"force",
+					capabilities,
+					blink.get_lsp_capabilities()
+				);
+			end
 
-			local lsp_root_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:match("@(.+)"), ":h");
-			local lsp_langs_dir = lsp_root_dir .. "/languages";
-			local lsp_ls_config_files = vim.fn.glob(lsp_langs_dir .. "/*.lua", false, true);
-
-			if vim.fn.isdirectory(lsp_langs_dir) == 0 then
-				notify("Lang directory not found at " .. lsp_langs_dir .. " (using defaults)",
-					vim.log.levels.ERROR);
-				-- TODO: add fallback lsp enabling functionality
-				-- TEST: test how lsp is behaving on fallback
-			else
-				for _, lsp_ls_config_file in ipairs(lsp_ls_config_files) do
-					local ok, config = pcall(dofile, lsp_ls_config_file);
-					if not ok or not type(config) == "table" then
+			-- TEST: Test if that is working correctly
+			local files = require("wasabi.langs").get_config_files("lsp");
+			for name, config in pairs(files) do
+				if not type(config) == "table" then
+					notify(
+						"expected <table>, got <" .. type(config) .. ">",
+						vim.log.levels.ERROR,
+						"lsp/init.lua"
+					);
+				else
+					vim.lsp.config[name] = vim.tbl_deep_extend("force", config, {
+						on_attach = on_attach,
+						capabilities = capabilities,
+					});
+					local enabled , err = pcall(vim.lsp.enable, name);
+					if not enabled then
 						notify(
-							"expected <table>, got <" ..
-							type(config) .. "> at [" .. lsp_ls_config_file .. "]",
-							vim.log.levels.ERROR);
-					else
-						for ls_name, ls_config in pairs(config) do
-							if not type(ls_config) == "table" then
-								notify(
-									"expected <table>, got <" ..
-									type(ls_config) .. "> at [" .. lsp_ls_config_file .. "]",
-									vim.log.levels.ERROR);
-							else
-								vim.lsp.config[ls_name] = vim.tbl_deep_extend(
-									"force", ls_config, {
-										on_attach = on_attach,
-										capabilities = capabilities,
-									});
-								local enabled, enable_err = pcall(vim.lsp.enable, ls_name);
-								if not enabled then
-									notify(
-										"Failed to enable [" ..
-										ls_name .. "] (" .. tostring(enable_err) .. ")",
-										vim.log.level.ERROR);
-								end
-							end
-						end
+							"Failed to enable <" .. name .. ">-<" .. tostring(err) .. ">",
+							vim.log.level.ERROR,
+							"lsp/init.lua"
+						);
 					end
 				end
 			end
