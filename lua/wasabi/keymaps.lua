@@ -150,7 +150,7 @@ function M.lsp(_, bufnr)
 	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
 end
 
-function M.dap(dap, dapui)
+function M.dap(dap, dapview)
 	vim.keymap.set("n", "<leader>db", function()
 		dap.toggle_breakpoint()
 	end, { desc = "Toggle break point" });
@@ -166,6 +166,10 @@ function M.dap(dap, dapui)
 	vim.keymap.set("n", "<leader>dT", function ()
 		dap.termainate()
 	end, { desc = "Termainate" });
+
+	vim.keymap.set("n", "<leader>du", function ()
+		dapview.toggle();
+	end, { desc = "Toggle debugger ui" });
 end
 
 function M.undotree()
