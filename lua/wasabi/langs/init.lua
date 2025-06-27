@@ -7,7 +7,7 @@ local function get_this_dir()
   end
 end
 
-function M.get_config_files(suffix)
+function M.get_config_files(prefix)
 	local notify = require("wasabi.utils").notify;
 
 	local dirs = vim.fn.glob(
@@ -23,11 +23,11 @@ function M.get_config_files(suffix)
 
 	for _, path in ipairs(paths) do
 		local name = vim.fn.fnamemodify(path, ":t");
-		path = path .. "/" .. suffix .. ".lua";
+		path = path .. "/" .. prefix .. ".lua";
 
 		if vim.fn.filereadable(path) ~= 1 then
 			notify(
-				"lsp config doesn't exist <" .. path .. ">",
+				prefix .. " config doesn't exist <" .. path .. ">",
 				vim.log.levels.DEBUG,
 				"langs/init.lua"
 			);
