@@ -1,3 +1,4 @@
+-- TODO: try to make labels fg character on the number line overlap with git status bg color
 return {
 	"folke/todo-comments.nvim",
 	dependencies = {
