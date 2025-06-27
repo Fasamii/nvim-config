@@ -107,7 +107,7 @@ return {
 					local enabled , err = pcall(vim.lsp.enable, name);
 					if not enabled then
 						notify(
-							"Failed to enable <" .. name .. ">-<" .. tostring(err) .. ">",
+							"Failed to enable <" .. name .. ">\n<" .. tostring(err) .. ">",
 							vim.log.level.ERROR,
 							"lsp/init.lua"
 						);
