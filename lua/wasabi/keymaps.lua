@@ -159,15 +159,15 @@ function M.dap(dap, dapview)
 		dap.continue()
 	end, { desc = "Continue" });
 
-	vim.keymap.set("n", "<leader>dC", function ()
+	vim.keymap.set("n", "<leader>dC", function()
 		dap.run_to_cursor()
 	end, { desc = "Run to Cursor" });
 
-	vim.keymap.set("n", "<leader>dT", function ()
+	vim.keymap.set("n", "<leader>dT", function()
 		dap.termainate()
 	end, { desc = "Termainate" });
 
-	vim.keymap.set("n", "<leader>du", function ()
+	vim.keymap.set("n", "<leader>du", function()
 		dapview.toggle();
 	end, { desc = "Toggle debugger ui" });
 end
