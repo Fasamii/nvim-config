@@ -353,3 +353,39 @@ hi("WhichKeyGroup", { fg = cp.cyan });
 -- hi("WhichKeyIconGrey", { bg = cp.red });
 -- hi("WhichKeyTitle", { bg = cp.red });
 hi("WhichKeyNormal", { bg = cp.black_shadow });
+-----------------
+-- NvimDapView --
+-----------------
+-- TODO: check what these are
+-- TODO: check highlight groups for nvim-dap define these and potentially link here instead of redefining
+-- TEST: check if that hi groups are being applied
+hi("NvimDapViewBoolean", { fg = cp.ping });
+hi("NvimDapViewControlDiwsconnect", { fg = cp.ping });
+hi("NvimDapViewControlNC", { fg = cp.ping });
+hi("NvimDapViewControlPause", { fg = cp.ping });
+hi("NvimDapViewControlPlay", { fg = cp.ping });
+hi("NvimDapViewControlRunLast", { fg = cp.ping });
+hi("NvimDapViewControlStepBack", { fg = cp.ping });
+hi("NvimDapViewControlStepInto", { fg = cp.ping });
+hi("NvimDapViewControlStepOut", { fg = cp.ping });
+hi("NvimDapViewControlStepOver", { fg = cp.ping });
+hi("NvimDapViewControlTerminate", { fg = cp.ping });
+hi("NvimDapViewExceptionFilterDisabled", { fg = cp.ping });
+hi("NvimDapViewExceptionFilterEnabled", { fg = cp.ping });
+hi("NvimDapViewFileName", { fg = cp.ping });
+hi("NvimDapViewFloat", { fg = cp.ping });
+hi("NvimDapViewFrameCurrent", { fg = cp.ping });
+hi("NvimDapViewFunction", { fg = cp.ping });
+hi("NvimDapViewLineNumber", { fg = cp.ping });
+hi("NvimDapViewMissingData", { fg = cp.ping });
+hi("NvimDapViewNumber", { fg = cp.ping });
+hi("NvimDapViewSeparator", { fg = cp.ping });
+hi("NvimDapViewString", { fg = cp.ping });
+hi("NvimDapViewTabSelected", { fg = cp.ping });
+hi("NvimDapViewTab", { fg = cp.ping });
+hi("NvimDapViewThreadError", { fg = cp.ping });
+hi("NvimDapViewThreadStopped", { fg = cp.ping });
+hi("NvimDapViewThread", { fg = cp.ping });
+hi("NvimDapViewWatchError", { fg = cp.ping });
+hi("NvimDapViewWatchExpr", { fg = cp.ping });
+hi("NvimDapViewWatchUpdated", { fg = cp.ping });

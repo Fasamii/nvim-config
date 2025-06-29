@@ -52,8 +52,8 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 vim.opt.updatetime = 50;
 vim.diagnostic.config({
-	virtual_text = true,
-	virtual_lines = false,
+	virtual_text = false,
+	virtual_lines = true,
 	signs = false,
 	underline = false,
 	update_in_insert = false,
