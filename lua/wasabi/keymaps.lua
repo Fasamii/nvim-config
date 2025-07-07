@@ -146,8 +146,7 @@ function M.lsp(_, bufnr)
 	vim.keymap.set("n", "gi", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "show hover info" }))
 	-- TODO: learn what rename is
 	-- vim.keymap.set("n", "rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename symbol" }))
-	-- TODO: learn what are code actions
-	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
 end
 
 function M.dap(dap, dapview)
