@@ -9,36 +9,47 @@ return {
 		sign_priority = 8,
 		keywords = {
 			FIX = {
-				signs = true,
+				signs = false,
 				icon = "󰅗 ",
 				color = "err",
 				alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "ERR" },
 			},
 			TODO = {
-				signs = true,
+				signs = false,
 				icon = " ",
 				color = "warn",
 				alt = { "LATER" },
 			},
+			IMPORTANT = {
+				signs = false,
+				icon = " ",
+				color = "err",
+			},
 			WARN = {
-				signs = true,
+				signs = false,
 				icon = "󰀧 ",
 				color = "warn",
 				alt = { "WARNING", "XXX" }
 			},
+			DONE = {
+				signs = false,
+				icon = " ",
+				color = "ok",
+				alt = { "WARNING", "XXX" }
+			},
 			HACK = {
-				signs = true,
+				signs = false,
 				icon = "󰇟 ",
 				color = "err",
 			},
 			NOTE = {
 				icon = "󰞋 ",
-				signs = true,
+				signs = false,
 				color = "info",
 				alt = { "INFO" },
 			},
 			PERF = {
-				signs = true,
+				signs = false,
 				icon = "󱕍 ",
 				alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" }
 			},
@@ -71,7 +82,8 @@ return {
 		},
 		colors = {
 			--TODO: tweaks colors e.g.: make TODO highlight darker.
-			err = { "DiagnosticError", "ErrorMsg", "Error" , "#dc2626" },
+			ok = { "DiagnosticOk", "Ok", "#00d75f" },
+			err = { "DiagnosticError", "ErrorMsg", "Error", "#dc2626" },
 			warn = { "DiagnosticWarn", "WarningMsg", "Warning", "#fbbf24" },
 			info = { "DiagnosticInfo", "Info", "#2563eb" },
 			default = { "Identifier", "#7c3aed" },

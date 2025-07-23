@@ -11,8 +11,8 @@ vim.opt.expandtab = false;
 vim.opt.tabstop = 6;
 vim.opt.softtabstop = 6;
 vim.opt.shiftwidth = 6;
-vim.opt.autoindent = true;  -- Check if you like it
-vim.opt.smartindent = true; -- Check if you like it
+vim.opt.autoindent = true;   -- Check if you like it
+vim.opt.smartindent = true;  -- Check if you like it
 vim.opt.colorcolumn = "100"; -- in case you need that stupid ruler
 
 vim.opt.wrap = true;
@@ -52,8 +52,12 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 vim.opt.updatetime = 50;
 vim.diagnostic.config({
-	virtual_text = false,
-	virtual_lines = true,
+	virtual_text = {
+		severity = { max = vim.diagnostic.severity.WARN }
+	},
+	virtual_lines = {
+		severity = { min = vim.diagnostic.severity.ERROR }
+	},
 	signs = false,
 	underline = false,
 	update_in_insert = false,

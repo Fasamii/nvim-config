@@ -70,6 +70,22 @@ return {
 			{ "folke/lazydev.nvim" },
 		},
 		config = function()
+
+			vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+				pattern = "*.c",
+				callback = function()
+					vim.bo.filetype = "c"
+				end,
+			})
+
+			vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+				pattern = "*.h",
+				callback = function()
+					-- You might want to set this to "c" if your headers are C
+					vim.bo.filetype = "c"
+				end,
+			})
+
 			local notify = require("wasabi.utils").notify;
 
 			local on_attach = function(client, bufnr)
