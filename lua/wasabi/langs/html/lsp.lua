@@ -4,7 +4,7 @@ return {
 		settings = {
 			html = {
 				format = {
-					templating = true,
+					templating = false,
 					wrapLineLength = 120,
 					wrapAttributes = "auto",
 				},
