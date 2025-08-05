@@ -22,11 +22,11 @@ local function toggle()
 end;
 
 local tl = {
-	pickers = require('telescope.pickers'),
-	finders = require('telescope.finders'),
-	actions = require('telescope.actions'),
-	action_state = require('telescope.actions.state'),
-	conf = require('telescope.config').values,
+	pickers = require("telescope.pickers"),
+	finders = require("telescope.finders"),
+	actions = require("telescope.actions"),
+	action_state = require("telescope.actions.state"),
+	conf = require("telescope.config").values,
 };
 
 -- TODO: review that foo 

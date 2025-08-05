@@ -134,7 +134,7 @@ end
 
 function M.lsp()
 	vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format() end, { desc = "Format file" });
-	vim.keymap.set("n", '<leader>lh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
+	vim.keymap.set("n", "<leader>lh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
 		{ desc = "Toggle inlay hints" })
 end
 
@@ -145,8 +145,8 @@ function M.comment(api)
 	end, { desc = "Comment" });
 
 	vim.keymap.set("v", "<leader>/", function()
-		local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-		vim.api.nvim_feedkeys(esc, 'nx', false)
+		local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+		vim.api.nvim_feedkeys(esc, "nx", false)
 		api.toggle.linewise(vim.fn.visualmode())
 	end, { desc = "Comment selection" });
 
@@ -155,8 +155,8 @@ function M.comment(api)
 	end, { desc = "Block comment" })
 
 	vim.keymap.set("v", "<leader>cb", function()
-		local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-		vim.api.nvim_feedkeys(esc, 'nx', false)
+		local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+		vim.api.nvim_feedkeys(esc, "nx", false)
 		api.toggle.blockwise(vim.fn.visualmode())
 	end, { desc = "Block comment selection" })
 

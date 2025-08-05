@@ -69,13 +69,10 @@ require("plugins.bottomline");
 require("plugins.treesitter");
 require("plugins.gitchanges");
 require("plugins.tags");
-
 require("plugins.session");
-
 require("plugins.samesame");
 require("plugins.comments");
-require('numb').setup();
-
+require("numb").setup();
 require("plugins.picker");
 
 require("mason").setup();
