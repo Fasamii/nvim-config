@@ -57,6 +57,8 @@ vim.pack.add({
 	{ src = "https://github.com/numToStr/Comment.nvim" },
 	{ src = "https://github.com/RRethy/vim-illuminate" },
 	{ src = "https://github.com/nacro90/numb.nvim" },
+	-- completion
+	{ src = "https://github.com/Saghen/blink.cmp" },
 });
 
 vim.cmd.colorscheme("sobsob");
@@ -79,6 +81,7 @@ require("mason").setup();
 require("mason-lspconfig").setup({
 	automatic_installation = true,
 });
-
 vim.lsp.inlay_hint.enable(true);
 require("keymaps").lsp();
+
+require("plugins.completion");
