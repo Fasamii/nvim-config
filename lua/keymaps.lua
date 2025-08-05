@@ -28,10 +28,10 @@ vim.keymap.set("n", "<leader>br", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 
 
 -- tabs
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "create new tab" });
-vim.keymap.set("n", "<leader>td", "<cmd>tabclose<CR>", { desc = "close current tab" });
-vim.keymap.set("n", "<leader>tl", "<cmd>tabn<CR>", { desc = "next tab" });
-vim.keymap.set("n", "<leader>th", "<cmd>tabp<CR>", { desc = "prev tab" });
+vim.keymap.set("n", "<leader>wn", "<cmd>tabnew<CR>", { desc = "create new tab" });
+vim.keymap.set("n", "<leader>wd", "<cmd>tabclose<CR>", { desc = "close current tab" });
+vim.keymap.set("n", "<leader>wl", "<cmd>tabn<CR>", { desc = "next tab" });
+vim.keymap.set("n", "<leader>wh", "<cmd>tabp<CR>", { desc = "prev tab" });
 
 -- split
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" });

@@ -32,13 +32,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	-- Treesitter
-	{
-		src = "https://github.com/nvim-treesitter/nvim-treesitter",
-		hooks = {
-			post_install = function() vim.cmd("TSUpdate") end,
-			post_update = function() vim.cmd("TSUpdate") end,
-		},
-	},
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	-- Telescope
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
