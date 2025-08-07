@@ -4,7 +4,7 @@ require("illuminate").configure({
 		"treesitter",
 		"regex",
 	},
-	delay = 100,
+	delay = 30,
 	-- filetype_overrides: filetype specific overrides.
 	-- The keys are strings to represent the filetype while the values are tables that
 	-- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist

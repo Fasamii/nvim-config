@@ -133,9 +133,23 @@ function M.tags(pick)
 end
 
 function M.lsp()
+	vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "open lsp diagnostics" });
+	vim.keymap.set("n", "gi", vim.lsp.buf.hover, { desc = "show hover info" });
+
 	vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format() end, { desc = "Format file" });
 	vim.keymap.set("n", "<leader>lh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
 		{ desc = "Toggle inlay hints" })
+
+	-- TODO: change that keymaps or review these
+	vim.keymap.set("n", "<leader>fd", vim.lsp.buf.definition,
+		{ desc = "go to definition" });
+	vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "show references" });
+	vim.keymap.set("n", "<leader>fD", vim.lsp.buf.declaration, { desc = "go to declaration" });
+	vim.keymap.set("n", "<leader>fi", vim.lsp.buf.implementation, { desc = "go to implementation" });
+
+	-- TODO: learn what rename is
+	-- vim.keymap.set("n", "rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename symbol" }))
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code actions" });
 end
 
 function M.comment(api)

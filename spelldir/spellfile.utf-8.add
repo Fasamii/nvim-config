@@ -10,3 +10,8 @@ denylist
 filetype
 allowlist
 Backend
+Vec
+vec
+CCOLL
+MiniVec
+idxs
