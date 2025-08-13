@@ -66,8 +66,8 @@ function M.spell(toggle, suggest)
 end
 
 function M.telescope()
-	vim.keymap.set("n", "<leader>fp", "<cmd>Telescope find_files<CR>", { desc = "Find Files" });
-	vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Find Files" });
+	vim.keymap.set("n", "<leader>fp", "<cmd>Telescope find_files<CR>", { desc = "Find files" });
+	vim.keymap.set("n", "<leader>fl", "<cmd>Telescope oldfiles<CR>", { desc = "Find last files" });
 	vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Find Grep" });
 	vim.keymap.set("n", "<leader>fa", "<cmd>Telescope find_files cwd=$HOME <CR>", { desc = "Find Global" });
 	vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Find Help" });
@@ -143,13 +143,13 @@ function M.lsp()
 	-- TODO: change that keymaps or review these
 	vim.keymap.set("n", "<leader>fd", vim.lsp.buf.definition,
 		{ desc = "go to definition" });
-	vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "show references" });
+	vim.keymap.set("n", "<leader>fr", vim.lsp.buf.references, { desc = "show references" });
 	vim.keymap.set("n", "<leader>fD", vim.lsp.buf.declaration, { desc = "go to declaration" });
 	vim.keymap.set("n", "<leader>fi", vim.lsp.buf.implementation, { desc = "go to implementation" });
 
 	-- TODO: learn what rename is
 	-- vim.keymap.set("n", "rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename symbol" }))
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code actions" });
+	vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "code actions" });
 end
 
 function M.comment(api)
