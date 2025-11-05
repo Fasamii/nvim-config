@@ -7,7 +7,6 @@ if vim.env.TERM == "xterm-kitty" then
 				"@",
 				"set-spacing",
 				"padding=0",
-				--"margin=0",
 			});
 		end,
 	});
@@ -53,6 +52,8 @@ vim.pack.add({
 	{ src = "https://github.com/nacro90/numb.nvim" },
 	-- completion
 	{ src = "https://github.com/Saghen/blink.cmp" },
+	-- markdow
+	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 });
 
 vim.cmd.colorscheme("sobsob");
@@ -70,11 +71,13 @@ require("plugins.samesame");
 require("plugins.comments");
 require("numb").setup();
 require("plugins.picker");
+require("plugins.markdown");
 
 require("mason").setup();
 require("mason-lspconfig").setup({
 	automatic_installation = true,
 });
+require("plugins.lsp");
 vim.lsp.inlay_hint.enable(true);
 require("keymaps").lsp();
 

@@ -132,7 +132,7 @@ require("lualine").setup({
 		},
 		lualine_z = {
 			{
-				"location",
+				"progress",
 				padding = { left = 1, right = 1},
 			},
 		},

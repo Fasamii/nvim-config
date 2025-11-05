@@ -17,6 +17,16 @@ vim.keymap.set("v", "<", "<gv", { desc = "indent left without removing highlight
 vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", { desc = "moves lines down in visual mode" });
 vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", { desc = "moves lines down in visual mode" });
 
+vim.keymap.set("n", "<leader>fv", function()
+  vim.cmd("normal! ggVG");
+end, { desc = "Copy entire buffer" })
+
+vim.keymap.set("n", "<leader>fy", function()
+  local pos = vim.fn.getpos(".");
+  vim.cmd("normal! ggVG\"+y");
+  vim.fn.setpos(".", pos);
+end, { desc = "Copy entire buffer" })
+
 -- simplifying
 vim.keymap.set("n", "<leader>p", "\"+p", { desc = "paste from system clipboard" });
 vim.keymap.set("v", "<leader>y", "\"+y", { desc = "copy to system clipboard" });
