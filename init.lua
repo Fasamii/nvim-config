@@ -7,9 +7,9 @@ if vim.env.TERM == "xterm-kitty" then
 				"@",
 				"set-spacing",
 				"padding=0",
-			});
+			})
 		end,
-	});
+	})
 
 	vim.api.nvim_create_autocmd("VimLeavePre", {
 		callback = function()
@@ -19,10 +19,10 @@ if vim.env.TERM == "xterm-kitty" then
 				"set-spacing",
 				"padding=default",
 				"margin=default",
-			});
+			})
 		end,
-	});
-end;
+	})
+end
 
 vim.pack.add({
 	-- Color scheme
@@ -47,38 +47,36 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	-- quality of life
-	{ src = "https://github.com/numToStr/Comment.nvim" },
 	{ src = "https://github.com/RRethy/vim-illuminate" },
 	{ src = "https://github.com/nacro90/numb.nvim" },
 	-- completion
 	{ src = "https://github.com/Saghen/blink.cmp" },
 	-- markdow
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
-});
+})
 
-vim.cmd.colorscheme("sobsob");
+vim.cmd.colorscheme("sobsob")
 
-require("opts");
-require("keymaps");
-require("spell");
+require("opts")
+require("keymaps")
+require("spell")
 
-require("plugins.bottomline");
-require("plugins.treesitter");
-require("plugins.gitchanges");
-require("plugins.tags");
-require("plugins.session");
-require("plugins.samesame");
-require("plugins.comments");
-require("numb").setup();
-require("plugins.picker");
-require("plugins.markdown");
+require("plugins.bottomline")
+require("plugins.treesitter")
+require("plugins.gitchanges")
+require("plugins.tags")
+require("plugins.session")
+require("plugins.samesame")
+require("numb").setup()
+require("plugins.picker")
+require("plugins.markdown")
 
-require("mason").setup();
+require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_installation = true,
-});
-require("plugins.lsp");
-vim.lsp.inlay_hint.enable(true);
-require("keymaps").lsp();
+})
+require("plugins.lsp")
+vim.lsp.inlay_hint.enable(true)
+require("keymaps").lsp()
 
-require("plugins.completion");
+require("plugins.completion")

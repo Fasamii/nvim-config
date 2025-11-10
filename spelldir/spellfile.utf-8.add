@@ -103,3 +103,5 @@ QueueFamilyIndices
 bool
 vkContext
 WindowHandler
+bruh
+swapchain
