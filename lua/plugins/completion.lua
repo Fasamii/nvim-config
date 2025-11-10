@@ -1,9 +1,9 @@
 require("blink.cmp").setup({
 	keymap = {
 		preset = 'none',
-		['<C-p>'] = { 'select_prev', 'fallback' },
-		['<C-n>'] = { 'select_next', 'fallback' },
-		['<C-y>'] = { 'select_and_accept' },
+		['<S-Tab>'] = { 'select_prev', 'fallback' },
+		['<Tab>'] = { 'select_next', 'fallback' },
+		['<CR>'] = { 'select_and_accept' },
 		['<C-e>'] = { 'hide' },
 		['<C-Space>'] = { 'show' },
 	},

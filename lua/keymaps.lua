@@ -1,5 +1,7 @@
 local M = {};
 
+vim.keymap.set("n", ";", ":", { desc = "Enter command mode" });
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight yank",
 	group = vim.api.nvim_create_augroup("Kickstart-highlihgt-yank", { clear = true, }),
@@ -18,13 +20,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", { desc = "moves lines down in visua
 vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", { desc = "moves lines down in visual mode" });
 
 vim.keymap.set("n", "<leader>fv", function()
-  vim.cmd("normal! ggVG");
+	vim.cmd("normal! ggVG");
 end, { desc = "Copy entire buffer" })
 
 vim.keymap.set("n", "<leader>fy", function()
-  local pos = vim.fn.getpos(".");
-  vim.cmd("normal! ggVG\"+y");
-  vim.fn.setpos(".", pos);
+	local pos = vim.fn.getpos(".");
+	vim.cmd("normal! ggVG\"+y");
+	vim.fn.setpos(".", pos);
 end, { desc = "Copy entire buffer" })
 
 -- simplifying

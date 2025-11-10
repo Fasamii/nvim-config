@@ -53,6 +53,8 @@ vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp" },
 	-- markdow
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+	-- rust specyfic
+	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 })
 
 vim.cmd.colorscheme("sobsob")
@@ -71,9 +73,18 @@ require("numb").setup()
 require("plugins.picker")
 require("plugins.markdown")
 
-require("mason").setup()
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "󱗜",
+			package_pending = "󰌴 ",
+			package_unsinstalled = "󰅗",
+		},
+	},
+})
 require("mason-lspconfig").setup({
 	automatic_installation = true,
+	ensure_installed = { "lua_ls", "rust_analyzer", "codelldb" },
 })
 require("plugins.lsp")
 vim.lsp.inlay_hint.enable(true)
