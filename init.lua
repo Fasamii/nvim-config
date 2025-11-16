@@ -83,13 +83,17 @@ require("mason").setup({
 	},
 })
 require("mason-lspconfig").setup({
-	automatic_installation = true,
-	ensure_installed = { "lua_ls", "codelldb" },
 	automatic_enable = {
 		exclude = {
 			"rust_analyzer",
 		}
-	}
+	},
+	automatic_installation = true,
+	ensure_installed = {
+		"lua_ls",
+		"codelldb",
+		"typescript-language-server",
+	},
 })
 require("plugins.lsp")
 
