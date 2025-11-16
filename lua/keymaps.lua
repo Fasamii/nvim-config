@@ -1,7 +1,5 @@
 local M = {};
 
-vim.keymap.set("n", ";", ":", { desc = "Enter command mode" });
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight yank",
 	group = vim.api.nvim_create_augroup("Kickstart-highlihgt-yank", { clear = true, }),

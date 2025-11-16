@@ -1,11 +1,11 @@
 require("blink.cmp").setup({
 	keymap = {
 		preset = 'none',
-		-- ['<S-Tab>'] = { 'select_prev', 'fallback' },
-		-- ['<Tab>'] = { 'select_next', 'fallback' },
-		['<Tab>'] = { 'select_and_accept' },
-		-- ['<C-e>'] = { 'hide' },
-		-- ['<C-Space>'] = { 'show' },
+		['<C-p>'] = { 'select_prev', 'fallback' },
+		['<C-n>'] = { 'select_next', 'fallback' },
+		['<S-Tab>'] = { 'select_and_accept' },
+		['<C-e>'] = { 'hide' },
+		['<C-Space>'] = { 'show' },
 	},
 
 	appearance = {
@@ -39,7 +39,7 @@ require("blink.cmp").setup({
 				preselect = true,
 				auto_insert = false
 			}
-		}
+		},
 	},
 
 	sources = {

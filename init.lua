@@ -84,10 +84,13 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup({
 	automatic_installation = true,
-	ensure_installed = { "lua_ls", "rust_analyzer", "codelldb" },
+	ensure_installed = { "lua_ls", "codelldb" },
+	automatic_enable = {
+		exclude = {
+			"rust_analyzer",
+		}
+	}
 })
 require("plugins.lsp")
-vim.lsp.inlay_hint.enable(true)
-require("keymaps").lsp()
 
 require("plugins.completion")
